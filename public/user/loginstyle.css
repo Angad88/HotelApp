@@ -1,0 +1,148 @@
+body {
+    background-image: url("../img/background.jpeg");
+    background-size: cover;
+    margin: 25px;
+    font-family: 'Roboto', sans-serif;
+    
+    /* It brings all the elements to the center */
+    text-align: left;
+}
+
+form {
+    margin: auto;
+    max-width: 350px;
+    box-shadow: 1px 1px 25px #333333;
+
+    /* It gives outside space from the body */
+
+    margin-top: 80px;
+    padding: 30px;
+
+    /* It gives space inside of the form */
+
+}
+
+h1, h5 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.inputContainer {
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+}
+
+.buttonContainer {
+    margin: 20px 0px;
+}
+
+#paragraphFooter {
+    color: rgb(84, 84, 84);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#forgotPassword {
+    text-decoration: none;
+    color: rgb(148, 148, 148);
+    transition: 0.3s;
+}
+
+#forgotPassword:hover {
+    text-decoration: none;
+    color: rgb(58, 58, 58);
+}
+
+span {
+    font-weight: bold;
+    color: rgb(105, 105, 105);
+    font-size: large;
+    line-height: 30px;
+}
+
+#signupAccount {
+    text-decoration: none;
+    color: rgb(148, 148, 148);
+    transition: 0.3s;
+}
+
+#signupAccount:hover {
+    color: rgb(57, 57, 57);
+}
+
+#signupButton {
+    background-color: rgb(117, 161, 190);
+    width: 100%;
+    background-image: url("../img/background1.png");
+    padding: 11px 0px;
+    border-style: none;
+    background-size: cover;
+    text-shadow: 3px 3px 5px #797979;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    opacity: 0.7;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+#signupButton:hover {
+    background-color: rgb(105, 144, 170);
+    background-size: cover;
+    opacity: 1;
+}
+
+
+.textInput {
+    width: 100%;
+    margin-top: 5px;
+    background-color: #e9e9e9;
+    border-style: solid;
+    border-color: #e9e9e9;
+    transition: 0.3s;
+}
+
+.textInput:hover {
+
+    background-color: #d7d7d7;
+    border-color: #d7d7d7;
+}
+
+input, select {
+    margin: 13px 0px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px 4px;
+}
+
+select option {
+    padding: 10px 4px;
+    background-color: rgb(145, 145, 144);
+    color: white;
+}
+
+.border-aqua {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px 10px 10px 10px;
+}
+
+.bg-white {
+    background-color: white;
+}
+.alert-successfully{
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(65, 169, 65);
+  }
+  
+  .alert-error{
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(218, 25, 25);
+    /* color:rgb(247, 232, 232); */
+
+  }

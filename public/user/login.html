@@ -1,0 +1,67 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loginstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="user.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form class="border-aqua bg-white" onsubmit="loginFormSubmit(event)">
+
+        <div class="text-center">
+            <h1>Login</h1>
+        </div>
+
+        <div id="notification">
+
+        </div>
+
+        <div class="inputContainer">
+            <label>Enter your Email</label>
+            <br>
+            <input required id="email" class="textInput" type="text" placeholder="Email...">
+        </div>
+
+        <div class="inputContainer">
+            <label>Password</label>
+            <br>
+            <input required id="password" class="textInput" type="password" placeholder="Password...">
+        </div>
+
+        
+
+        <div class="text-center">
+            <div class="buttonContainer">
+                <button id="signupButton">Login</button>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="text-center">
+            <span>Forgot your password? <a id = "forgotPassword" href="#">Click Here</a></span>
+        </div>
+
+        <div class="gradient">
+
+        </div>
+
+        
+
+    </form>
+
+    <div class="text-center">
+        <p id="paragraphFooter">
+            Don't have an account? <a id="signupAccount" href="signup.html">Sign Up here</a>
+        </p>
+    </div>
+
+</body>
+
+</html>
