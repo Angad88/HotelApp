@@ -57,6 +57,7 @@ function getUserInfo() {
     selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="login.html">Log out</a></button>`
 }
 
+let hotelIdArr = [];
 function getBestHotel() {
     const hotelCardContainer = document.getElementById('hotel-card-container');
     fetch(`${baseUrl}/admins`, {
@@ -67,8 +68,7 @@ function getBestHotel() {
     }).then((response) => {
         return response.json();
     }).then((adminData) => {
-        // get most popular hotel id into an array
-        let hotelIdArr = [];
+
 
         const hotelData = adminData.data;
         const sortedData = hotelData.sort((a, b) => b.reviewStars - a.reviewStars);
@@ -76,7 +76,7 @@ function getBestHotel() {
         
         for (let i = 0; i < mostFourPopularHotel.length; i++) {
             hotelIdArr.push(mostFourPopularHotel[i]._id);
-            hotelCardContainer.innerHTML += `<div class="hotel-card">
+            hotelCardContainer.innerHTML += `<div class="hotel-card" >
             <div class="background-card" style="background-image: url(${mostFourPopularHotel[i].img});">
 
             </div>
@@ -84,7 +84,7 @@ function getBestHotel() {
 
                 <div class="hotel-info">
                     <div class="hotel-title">
-                        <h3>${mostFourPopularHotel[i].name}</h3>
+                        <h3 id=${mostFourPopularHotel[i]._id} onclick='directToHotelPage(event)'>${mostFourPopularHotel[i].name}</h3>
                         <h4>${mostFourPopularHotel[i].city}</h4>
                     </div>
                     <div class="reviewStars">
@@ -115,11 +115,7 @@ function getBestHotel() {
     })
 }
 
-// Direct the user to the hotel main page when they click on the hotel name on hotel card
-// const hotelName = document.getElementById('hotelName');
-// hotelName.addEventListener('click', () => {
-//     window.location.href = 'hotel-mainpage.html'
-// } )
+
 
 
 function getAllHotel() {
@@ -197,3 +193,11 @@ async function getRooms(event) {
 getAllHotel();
 getBestHotel();
 getUserInfo();
+
+// HOTEL MAIN PAGE
+function directToHotelPage(event) {
+    let hotelId =  event.target.id;
+    localStorage.setItem('hotelId', hotelId);
+
+    window.location.href = "hotel-mainpage.html"
+}

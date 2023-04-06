@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
-    <!-- <script src="index.js" defer></script> -->
+    <script src="hotel-mainpage.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
-    <div class="imageBackground">
+    <div class="imageBackground" id="header-background">
         
         <nav id="navBar">
             <a href="#" class="toggle-button">
@@ -18,7 +18,7 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </a>
-            <div id="greeting" class="title" style="color: white; margin-left: 30px; width: 500px">FAIRMONT VANCOUVER HOTEL</div>
+            <div id="hotel-name" class="title" style="color: rgb(97, 97, 98); margin-left: 30px; width: 500px"></div>
             <div class="selection" id="selection">
                 <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;" href="#" data-scroll="navBar">Home</a></button>
                 <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;"href="#" data-scroll="hotelDescription-container">Destination</a></button>
@@ -27,11 +27,11 @@
             </div>
         </nav>
         <form class="searchDiv" onsubmit="getRooms()">
-            <div class="title2 searchMar"> 900 GEOGIA W STREET, VANCOUVER BC V3M 2E1</div>
-            <input id="numberOfTravelers" required class="searchBar searchMar"type="text" placeholder="No. Travelers">
+            <div id="hotel-address" class="title2 searchMar" style="background-color: rgb(97, 97, 98); padding: 20px; border-radius: 5px; width: 50%"> </div>
+            <input id="numberOfTravelers" required class="searchBar searchMar"type="text" placeholder="No. Travelers" style="border: 1px solid rgb(97, 97, 98)">
             <div class="searchMar2">
-                <input id="startDate" required class="searchBar searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:">
-                <input id="endDate" required class="searchBar searchMar"onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="To:">
+                <input id="startDate" required class="searchBar searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:" style="border: 1px solid rgb(97, 97, 98)">
+                <input id="endDate" required class="searchBar searchMar"onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="To:" style="border: 1px solid rgb(97, 97, 98)">
             </div>
             <button id="searchHotelButton" class="title3 searchButton">SEARCH</button>
             </div>
@@ -42,13 +42,8 @@
         <div class="title" style="text-align: center;" id="hotelDescription-container">
            HOTEL DESCRIPTION
         </div>
-        <div id="hotelDescription">
+        <div id="hotelDescription" style="margin: 50px 100px; line-height: 50px;">
 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe voluptate illum iure eum, doloribus maxime a quo maiores, iste quae numquam laboriosam itaque magni delectus unde vitae, illo ullam molestias!
-            Repellat quam ad maiores reprehenderit repudiandae fugiat a? Excepturi, officiis neque error, sunt ullam quibusdam maxime, officia voluptatum architecto beatae mollitia nam ea maiores corrupti amet quasi quis eum in.
-            Cupiditate ut provident ad voluptatum quasi quis, perspiciatis, in fugiat tempore nihil, architecto magnam. Ullam dolores et quam tempora, at blanditiis, fugiat ratione laudantium molestias officia corporis fugit vel iure?
-            Dolorum reiciendis corporis, iste nihil quis tempora eligendi accusantium accusamus necessitatibus excepturi esse id nesciunt, pariatur ab fugit nobis enim. Error praesentium nisi quam, recusandae omnis cumque excepturi? Cumque, quibusdam?
-            Iste saepe, nostrum deserunt quam perspiciatis beatae laudantium odio fugit in accusamus iusto. In quibusdam soluta dolore deserunt esse tempore voluptates maiores placeat sit! Dignissimos provident iure tempora ipsum ratione.
         </div>
         <!-- <div class="destinationChoose">
             <button class="title3 destinationImg1" style="background-image: url('../img/vancouver.png');"> <a class="button2" href="../destinationUI/vancouver.html">VANCOUVER</a></button>
@@ -63,7 +58,7 @@
         </div>
         <div class="popularHotel" id="popularHotel">
             <div class="title" style="text-align: center;">
-                MOST POPULAR HOTELS
+                OUR HOTELS
             </div>
             <div id="hotel-card-container" class="hotel-card-container">
             
