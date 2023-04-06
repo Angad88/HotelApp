@@ -54,7 +54,7 @@ function getUserInfo() {
     }
     userTitle.innerHTML += `${userInfo.name.toUpperCase()}!`;
     toLoginPage.remove();
-    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="login.html">Log out</a></button>`
+    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" onclick="signout()">Log out</a></button>`
 }
 
 let hotelIdArr = [];
@@ -188,6 +188,10 @@ async function getRooms(event) {
     
 }
 
+const signout = () => {
+    localStorage.clear();
+    window.location.href = 'login.html';
+}
 
 
 getAllHotel();

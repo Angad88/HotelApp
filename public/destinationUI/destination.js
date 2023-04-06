@@ -27,7 +27,7 @@ function getUserInfo() {
     }
     userTitle.innerHTML += `${userInfo.name.toUpperCase()}!`;
     toLoginPage.remove();
-    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="../user/login.html">Log out</a></button>`
+    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" onclick="signout()">Log out</a></button>`
 }
 
 function filterHotel() {
@@ -73,7 +73,7 @@ function filterHotel() {
                 <div class="hotel-info-container">
                     <div class="info-box">
                         <div class="hotel-info">
-                            <h3>${hotelData[i].name}</h3>
+                            <h3 id=${hotelData[i]._id} onclick="directToHotelPage(event)">${hotelData[i].name}</h3>
                             <h4>${hotelData[i].address}, ${hotelData[i].city}, ${hotelData[i].province}, ${hotelData[i].postalCode}</h4>
                         </div>
                 
@@ -104,7 +104,22 @@ function filterHotel() {
     }).catch((error) => {
         console.log(error);
     })
+
+}
+
+const signout = () => {
+    localStorage.clear();
+    window.location.href = '../user/login.html';
 }
 
 filterHotel();
 getUserInfo();
+
+// TO HOTEL MAIN PAGE
+function directToHotelPage(event) {
+    let hotelId = event.target.id;
+    
+    localStorage.setItem('hotelId', hotelId);
+    window.location.href = '../user/hotel-mainpage.html';
+
+}

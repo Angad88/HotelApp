@@ -23,11 +23,11 @@
                 <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;" href="#" data-scroll="navBar">Home</a></button>
                 <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;"href="#" data-scroll="hotelDescription-container">Destination</a></button>
                 <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;"href="#" data-scroll="popularHotel">Hotel</a></button>
-                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="login.html">Log in</a></button>
+                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" onclick="signout()">Log out</a></button>
             </div>
         </nav>
         <form class="searchDiv" onsubmit="getRooms()">
-            <div id="hotel-address" class="title2 searchMar" style="background-color: rgb(97, 97, 98); padding: 20px; border-radius: 5px; width: 50%"> </div>
+            <div id="hotel-address" class="title2 searchMar" style="background-color: rgb(79, 152, 152); padding: 20px; border-radius: 5px; width: 50%"> </div>
             <input id="numberOfTravelers" required class="searchBar searchMar"type="text" placeholder="No. Travelers" style="border: 1px solid rgb(97, 97, 98)">
             <div class="searchMar2">
                 <input id="startDate" required class="searchBar searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:" style="border: 1px solid rgb(97, 97, 98)">
@@ -45,13 +45,7 @@
         <div id="hotelDescription" style="margin: 50px 100px; line-height: 50px;">
 
         </div>
-        <!-- <div class="destinationChoose">
-            <button class="title3 destinationImg1" style="background-image: url('../img/vancouver.png');"> <a class="button2" href="../destinationUI/vancouver.html">VANCOUVER</a></button>
-            <button class="title3 destinationImg1"style="background-image: url('../img/montreal.png');"> <a class="button2" href="../destinationUI/montreal.html">MONTREAL</a></button>
-            <button class="title3 destinationImg1"style="background-image: url('../img/toronto.png');"> <a class="button2" href="../destinationUI/toronto.html">TORONTO</a></button>
-            <button class="title3 destinationImg1"style="background-image: url('../img/winnipeg.png');"> <a class="button2" href="../destinationUI/winnipeg.html">WINNIPEG</a></button>
-            <button class="title3 destinationImg1"style="background-image: url('../img/ottawa.png');"> <a class="button2" href="../destinationUI/ottawa.html">OTTAWA</a></button>
-        </div> -->
+
         <div style="display:grid; justify-content:center; grid-template-columns: 75%;align-items: center;">
             <div class="grayLine" style="margin: bottom 70px ;">
             </div>
