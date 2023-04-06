@@ -6,6 +6,17 @@ const selection = document.getElementById('selection');
 const userTitle = document.getElementById('greeting');
 const toLoginPage = document.getElementById('toLoginPage');
 
+const nav = document.querySelector('nav');
+
+window.onscroll = () => {
+    if (document.body.scrollTop >= 50) {
+        nav.classList.add('nav-scrolled');
+    }
+    else {
+        nav.classList.remove('nav-scrolled');
+    }
+}
+
 
 function getUserInfo() {
     const userInfo = JSON.parse(localStorage.getItem('current-user'));
@@ -56,7 +67,7 @@ function filterHotel() {
                 // console.log(adminData.data[i].city === title.text);
 
                 hotelCardContainer.innerHTML += ` <div class="hotel-card">
-                <div class="background-card" style="background-image: url('../img/hotel4.png');">
+                <div class="background-card" style="background-image: url(${hotelData[i].img});">
 
                 </div>
                 <div class="hotel-info-container">
