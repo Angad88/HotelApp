@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="indexAdmin.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="imageBackground" style="background-image: url(img/backgroundAdmin.jpeg);">
+        
+        <nav id="navBar" style="background-image: url(img/backgroundAdmin2.jpeg);">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div id="greeting" class="title" style="color: white; margin-left: 30px"> HELLO, </div>
+            <div class="selection" id="selection">
+                <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;" href="#">Home</a></button>
+                <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="#">Create Hotel</a></button>
+                <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="#">Delete Hotel</a></button>
+                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="./user/login.html">Log in</a></button>
+            </div>
+        </nav>
+        <form class="searchDiv" onsubmit="getRooms()">
+            <div class="title2 searchMar"> 
+            </div>
+            </div>
+        </form>
+        <!-- <div class="title" style="text-align: center;">
+            LET'S CHOOSE YOUR DESTINATION
+        </div>
+        <div class="destinationChoose">
+            <button class="title3 destinationImg1" style="background-image: url('img/vancouver.png');"> <a class="button2" href="destinationUI/vancouver.html">VANCOUVER</a></button>
+            <button class="title3 destinationImg1"style="background-image: url('img/montreal.png');"> <a class="button2" href="destinationUI/montreal.html">MONTREAL</a></button>
+            <button class="title3 destinationImg1"style="background-image: url('img/toronto.png');"> <a class="button2" href="destinationUI/toronto.html">TORONTO</a></button>
+            <button class="title3 destinationImg1"style="background-image: url('img/winnipeg.png');"> <a class="button2" href="destinationUI/winnipeg.html">WINNIPEG</a></button>
+            <button class="title3 destinationImg1"style="background-image: url('img/ottawa.png');"> <a class="button2" href="destinationUI/ottawa.html">OTTAWA</a></button>
+        </div> -->
+        <div style="display:grid; justify-content:center; grid-template-columns: 75%;align-items: center;">
+            <div class="grayLine" style="margin: bottom 50px ; margin-top: 50px;">
+            </div>
+        </div>
+        <div class="popularHotel">
+            <div class="title" style="text-align: center;">
+                Your Rooms
+                
+            </div>
+            <div class="title" style="text-align: center;padding-top: 0px;">
+                <div id="hotel-card-container2" class="hotel-card-container2">
+            
+                </div>
+                <button id="searchHotelButton" class="title3 searchButton" style="">Create</button>
+                <button id="searchHotelButton" class="title3 searchButton">Delete</button>
+            </div>
+            
+        </div>
+       
+    </div>
+</body>
+</html>
