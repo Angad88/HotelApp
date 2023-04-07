@@ -2,6 +2,8 @@ const baseUrl = 'http://localhost:2500/api/v1';
 const token = localStorage.getItem('access-token');
 console.log(token)
 
+
+// Display background color for nav bar when user scroll down
 const nav = document.querySelector('nav');
 
 window.onscroll = () => {
@@ -12,6 +14,7 @@ window.onscroll = () => {
         nav.classList.remove('nav-scrolled');
     }
 }
+
 
 const navItems = document.querySelectorAll('.navItems');
 
@@ -44,7 +47,7 @@ const userTitle = document.getElementById('greeting');
 const toLoginPage = document.getElementById('toLoginPage');
 
 
-
+// Authenticate user
 function getUserInfo() {
     const userInfo = JSON.parse(localStorage.getItem('current-user'));
     if(!userInfo) {
@@ -135,10 +138,12 @@ function getAllHotel() {
     
 }
 
+let suitableHotel;
 
 async function getRooms(event) {
     event.preventDefault();
-    console.log("hi")
+
+    suitableHotel = [];
 
     const destination = document.getElementById('destination').value;
     const destinationCapitalize = destination.charAt(0).toUpperCase() + destination.slice(1);   
@@ -157,7 +162,6 @@ async function getRooms(event) {
         const RoomData = await roomResponse.json();
         const rData = RoomData.data;
 
-        const suitableHotel = [];
         for(let i = 0; i < rData.length; i++) {
             let hotelID;
             hotelID = rData[i].hotel;
@@ -172,14 +176,17 @@ async function getRooms(event) {
     
             const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;
             const matchingNumberOfTravelers = numberOfTravelers >= rData[i].beds ? true : false;
-            console.log(matchingNumberOfTravelers, rData[i].beds);
             const matchingAvailableDate = startDate >= rData[i].startDate && endDate <= rData[i].endDate ? true : false;
             if(matchingDestination && matchingNumberOfTravelers && matchingAvailableDate) {
-               suitableHotel.push(rData[i]);
+               suitableHotel.push(rData[i]._id);
             }
         }
 
-        console.log(suitableHotel);
+        localStorage.setItem('roomsId', JSON.stringify(suitableHotel));
+        localStorage.setItem('userDestination', destinationCapitalize);
+        localStorage.setItem('userNumberOfTravelers', numberOfTravelers );
+        window.location.href = 'hotel-search-page.html';
+ 
     } catch(error) {
         console.log(error)
     }

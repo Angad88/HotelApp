@@ -6,7 +6,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
     <script src="index.js" defer></script>
-    <script src="hotel-mainpage.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -27,7 +26,7 @@
                 <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="login.html">Log in</a></button>
             </div>
         </nav>
-        <form class="searchDiv" onsubmit="getRooms()">
+        <form class="searchDiv" onsubmit="getRooms(event)">
             <div class="title2 searchMar"> FIND YOUR HOTELS</div>
             <input id="destination" required class="searchBar searchMar"type="text" placeholder="Destination">
             <input id="numberOfTravelers" required class="searchBar searchMar"type="text" placeholder="No. Travelers">

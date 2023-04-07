@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="hotel-search-page.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="imageBackground" style="background-image: url(../img/backgroundAdmin.jpeg);">
+        
+        <nav id="navBar" style="background-image: url(../img/backgroundAdmin2.jpeg);">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div id="greeting" class="title" style="color: white; margin-left: 30px"> HELLO </div>
+            <div class="selection" id="selection">
+                <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;" href="index.html">Home</a></button>
+                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="login.html" onclick="signout()">Log out</a></button>
+            </div>
+        </nav>
+        <form class="searchDiv" >
+            <div class="title2 searchMar" id="userDesired-destination" style="color: rgba(208, 254, 208, 0.95)">
+                Your Destination:  
+            </div>
+            <div class="title2 searchMar" id="userDesired-numberOfTravelers"  style="color: rgba(208, 254, 208, 0.95)">
+                Number Of Travelers:  
+            </div>
+            </div>
+            
+        </form>
+
+        <div style="display:grid; justify-content:center; grid-template-columns: 75%;align-items: center;">
+            <div class="grayLine" style="margin: bottom 50px ; margin-top: 50px;">
+            </div>
+        </div>
+        <div class="popularHotel">
+            <div class="popularHotel" id="popularHotel">
+                <div class="title" style="text-align: center;">
+                    YOUR DESIRED ROOMS
+                </div>
+                <div id="hotel-card-container" class="hotel-card-container" style="display: grid; place-items: center">
+                
+                </div>
+                
+            </div>
+            
+        </div>
+       
+    </div>
+</body>
+</html>

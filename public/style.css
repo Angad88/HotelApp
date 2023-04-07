@@ -322,11 +322,9 @@ body{
 .hotel-title h4, p{
   font-family: 'Poppins', sans-serif;
 }
-
-/* .hotelPrice {
-  grid-area: 2/2;
+/* 
+.hotelPrice {
   margin-left: 40%;
-  margin-bottom: 20%;
   text-align: center;
 } */
 
@@ -351,6 +349,14 @@ body{
   margin-top: 20px;
   font-weight: bolder;
 }
+
+.room-price {
+  margin-left: 50%;
+  margin-top: 20px;
+  font-weight: bolder;
+  font-size: larger;
+}
+
 
 .hotel-availableDate {
   display: grid;

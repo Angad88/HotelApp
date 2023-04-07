@@ -5,7 +5,24 @@ const hotelDescription = document.getElementById('hotelDescription');
 const headerBackground =  document.getElementById('header-background');
 const hotelCardContainer = document.getElementById('hotel-card-container');
 
+// Display background color for nav bar when user scroll down
+const nav = document.querySelector('nav');
+const title = document.querySelector('#hotel-name')
+window.onscroll = () => {
+    if (document.body.scrollTop >= 50) {
+        nav.classList.add('nav-scrolled');
+        title.style.color = 'white';
+    }
+    else {
+        nav.classList.remove('nav-scrolled');
+        title.style.color = 'rgb(97, 97, 98)';
+    }
 
+}
+
+
+
+// Authenticate user
 function getUserInfo() {
     const userInfo = JSON.parse(localStorage.getItem('current-user'));
     if(!userInfo) {
@@ -20,7 +37,6 @@ function getUserInfo() {
 
 async function getHotelPage() {
     let hotelId =  localStorage.getItem('hotelId');
-    // window.location.href = 'hotel-mainpage.html';
     console.log(hotelId);
 
     try {

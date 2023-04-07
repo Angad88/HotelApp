@@ -17,7 +17,7 @@ window.onscroll = () => {
     }
 }
 
-
+// Authenticate user
 function getUserInfo() {
     const userInfo = JSON.parse(localStorage.getItem('current-user'));
     if(!userInfo) {
@@ -46,6 +46,8 @@ function filterHotel() {
         const hotelData = adminData.data;
         
         for(let i = 0; i < hotelData.length; i++) {
+            
+        // Generate the review title based on review stars
             let reviewTitle;
             if (hotelData[i].reviewStars >= 4.5) {
                 reviewTitle = "VERY GOOD";
@@ -62,10 +64,10 @@ function filterHotel() {
             else {
                 reviewTitle = 'VERY BAD'
             }
-            console.log(hotelData[i].city === title.text)
-            if (hotelData[i].city === title.text) {
-                // console.log(adminData.data[i].city === title.text);
 
+            // Check the hotel city to be equaled to page city
+            if (hotelData[i].city === title.text) {
+                console.log(hotelData[i]);
                 hotelCardContainer.innerHTML += ` <div class="hotel-card">
                 <div class="background-card" style="background-image: url(${hotelData[i].img});">
 
@@ -89,7 +91,7 @@ function filterHotel() {
                     </div>
                     <div class="description">
                         <h4>Description</h4>
-                        <p>${hotelData[i].description}</p>
+                        <p>${hotelData[i].description.slice(0, 300)}...</p>
                     </div>
                 </div>
 
