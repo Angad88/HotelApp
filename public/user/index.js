@@ -144,6 +144,7 @@ async function getRooms(event) {
     event.preventDefault();
 
     suitableHotel = [];
+    const bookingInfo = {};
 
     const destination = document.getElementById('destination').value;
     const destinationCapitalize = destination.charAt(0).toUpperCase() + destination.slice(1);   
@@ -151,6 +152,9 @@ async function getRooms(event) {
     const numberOfTravelers = document.getElementById('numberOfTravelers').value;
     const startDate = document.getElementById('startDate').value;
     const endDate = document.getElementById('endDate').value;
+
+    const userStartDate = new Date(startDate);
+    const userEndDate = new Date(endDate);
 
     try {
         const roomResponse = await fetch(`${baseUrl}/hotels`, {
@@ -182,9 +186,14 @@ async function getRooms(event) {
             }
         }
 
-        localStorage.setItem('roomsId', JSON.stringify(suitableHotel));
-        localStorage.setItem('userDestination', destinationCapitalize);
-        localStorage.setItem('userNumberOfTravelers', numberOfTravelers );
+        // Push booking info into an object and save it on local storage
+        bookingInfo.destination = destinationCapitalize;
+        bookingInfo.numberOfTravelers = numberOfTravelers;
+        bookingInfo.startDate = userStartDate.toLocaleDateString();
+        bookingInfo.endDate = userEndDate.toLocaleDateString();
+        
+        localStorage.setItem('roomsIdArr', JSON.stringify(suitableHotel));
+        localStorage.setItem('bookingInfo', JSON.stringify(bookingInfo));
         window.location.href = 'hotel-search-page.html';
  
     } catch(error) {

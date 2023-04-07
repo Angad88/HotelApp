@@ -15,6 +15,21 @@ window.onscroll = () => {
     }
 }
 
+// Get room id that the user want to book and save it in localstorage
+const getRoomId = (event) => {
+    
+    const roomId = event.target.id;
+
+    // push those information into an object and save it in local storage
+    const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
+    bookingInfo.roomId = roomId;
+
+    localStorage.setItem('bookingInfo', JSON.stringify(bookingInfo));
+
+    window.location.href = 'hotelBooking.html';
+}
+
+
 // Authenticate user
 const userTitle = document.getElementById('greeting');
 function getUserInfo() {
@@ -30,11 +45,10 @@ function getUserInfo() {
 }
 
 // Get room id array which is filtered already in user home page
-const roomIdArray = JSON.parse(localStorage.getItem('roomsId'));
+const roomIdArray = JSON.parse(localStorage.getItem('roomsIdArr'));
 
 // Get user destination and numberOfTravelers
-const destination = localStorage.getItem('userDestination');
-const numberOfTravelers = localStorage.getItem('userNumberOfTravelers');
+const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
 async function getRooms() {
 
     try {
@@ -108,7 +122,7 @@ async function getRooms() {
                             <p>${formattedStartDate}-${formattedEndDate}</p>
                             <p style="width: 100%; font-size: smaller">${isBreakfastIncluded}</p>
                         </div>
-                        <button class="book-button">Book Us</button>
+                        <button id=${roomData._id} class="book-button" onclick="getRoomId(event)">Book Us</button>
                     </div>
     
               
@@ -120,8 +134,8 @@ async function getRooms() {
             
     
             // Display user destination and number of travelers;
-            userDestination.innerHTML += `${destination}`;
-            userNumberOfTravelers.innerHTML += `${numberOfTravelers}`
+            userDestination.innerHTML += `${bookingInfo.destination}`;
+            userNumberOfTravelers.innerHTML += `${bookingInfo.numberOfTravelers}`
         }
        
     } catch (error) {
@@ -138,3 +152,4 @@ const signout = () => {
     localStorage.clear();
     window.location.href = 'login.html';
 }
+

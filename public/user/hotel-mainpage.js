@@ -21,6 +21,30 @@ window.onscroll = () => {
 }
 
 
+// Get room id that the user want to book and save it in localstorage
+const getRoomId = (event) => {
+    const bookingInfo = {};
+
+    const roomId = event.target.id;
+    const numberOfTravelers = document.getElementById('numberOfTravelers').value;
+    const checkinDate = document.getElementById('startDate').value;
+    const checkoutDate = document.getElementById('endDate').value;
+
+    // handle date type
+    const userStartDate = new Date(checkinDate);
+    const userEndDate = new Date(checkoutDate);
+
+    // push those information into an object and save it in local storage
+    bookingInfo.roomId = roomId;
+    bookingInfo.numberOfTravelers  = numberOfTravelers;
+    bookingInfo.startDate = userStartDate.toLocaleDateString();
+    bookingInfo.endDate = userEndDate.toLocaleDateString();
+    localStorage.setItem('bookingInfo', JSON.stringify(bookingInfo));
+
+    window.location.href = 'hotelBooking.html';
+}
+
+
 
 // Authenticate user
 function getUserInfo() {
@@ -111,7 +135,7 @@ async function getHotelPage() {
                             <p>${formattedStartDate}-${formattedEndDate}</p>
                             <p style="width: 100%; font-size: smaller">${isBreakfastIncluded}</p>
                         </div>
-                        <button class="book-button">Book Us</button>
+                        <button id=${roomData[i]._id} class="book-button" onclick="getRoomId(event)">Book Us</button>
                     </div>
 
               
@@ -136,3 +160,4 @@ const signout = () => {
     localStorage.clear();
     window.location.href = 'login.html';
 }
+

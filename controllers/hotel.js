@@ -126,6 +126,27 @@ const getRoomById = async (req, res) => {
     }   
 }
 
+const bookRoom = async (req, res) => {
+    const incomingData = req.body;
+    const id = req.params.id;
+    try {
+
+        const roomData = await RoomModel.findByIdAndUpdate(id, incomingData, {returnOriginal: false});
+        res.status(200).json({
+            message: "Book Room Successfully",
+            data: roomData
+        })
+
+    } catch(error) {
+        res.status(500).json({
+            message:"There was an error",
+            error
+        })
+    }
+
+    
+
+}
 
 
 
@@ -134,5 +155,6 @@ module.exports = {
     getAllRoom,
     deleteRoom,
     updateRoom,
-    getRoomById
+    getRoomById,
+    bookRoom
 }

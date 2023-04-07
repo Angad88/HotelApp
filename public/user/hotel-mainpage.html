@@ -25,18 +25,13 @@
                 <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" href="login.html" onclick="signout()">Log out</a></button>
             </div>
         </nav>
-        <form class="searchDiv" onsubmit="getRooms()">
+        <div class="searchDiv">
             <div id="hotel-address" class="title2 searchMar" style="background-color: rgb(79, 152, 152); padding: 20px; border-radius: 5px; width: 50%"> </div>
-            <input id="numberOfTravelers" required class="searchBar searchMar"type="text" placeholder="No. Travelers" style="border: 1px solid rgb(97, 97, 98)">
-            <div class="searchMar2">
-                <input id="startDate" required class="searchBar searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:" style="border: 1px solid rgb(97, 97, 98)">
-                <input id="endDate" required class="searchBar searchMar"onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="To:" style="border: 1px solid rgb(97, 97, 98)">
             </div>
-            <button id="searchHotelButton" class="title3 searchButton">SEARCH</button>
             </div>
 
 
-        </form>
+        </div>
         
         <div class="title" style="text-align: center;" id="hotelDescription-container">
            HOTEL DESCRIPTION
@@ -51,7 +46,18 @@
         </div>
         <div class="popularHotel" id="popularHotel">
             <div class="title" style="text-align: center;">
-                OUR HOTELS
+                CHOOSE YOUR ROOM
+            </div>
+            <div id="checkinAndCheckoutDate">
+                <form class="get-user-info">
+                    <div class="searchMar2" style="grid-template-columns: 40% 30% 30%">
+                        <input id="numberOfTravelers" required class="searchBar searchMar"type="number" placeholder="No. Travelers" style="border: 2px solid rgb(97, 97, 98); width: 90%; margin-left: 20px;">
+                    
+                        <input id="startDate" required class="searchBar searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:" style="border: 2px solid rgb(97, 97, 98); width: 90%">
+                        <input id="endDate" required class="searchBar searchMar"onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="To:" style="border: 2px solid rgb(97, 97, 98);width: 90%">
+             
+        
+                </form>
             </div>
             <div id="hotel-card-container" class="hotel-card-container">
             
