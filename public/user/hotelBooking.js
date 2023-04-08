@@ -1,6 +1,9 @@
 const baseUrl = 'http://localhost:2500/api/v1';
 const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
 
+// Make sure user enter the range day they book a room
+const checkDate = bookingInfo.startDate !== "Invalid Date"  && bookingInfo.endDate !== "Invalid Date" ? true : false;
+
 
 
 
@@ -18,6 +21,8 @@ function getUserInfo() {
     selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" onclick="signout()">Log out</a></button>`
 }
 
+
+// Booking Room 
 async function bookingRoom(event) {
     event.preventDefault();
     const customerFName = document.getElementById('user-first-name').value;
@@ -58,6 +63,7 @@ async function bookingRoom(event) {
 
 }
 
+// Fetch Room Data
 async function fetchRoomData() {
     const roomResponse = await fetch(`${baseUrl}/hotels/${bookingInfo.roomId}`, {
         method: "GET",
@@ -69,9 +75,8 @@ async function fetchRoomData() {
     const response = await roomResponse.json();
     const roomData = response.roomData;
     
-    console.log(bookingInfo.startDate <= bookingInfo.endDate);
     // Checking the available date is right
-    if(bookingInfo.startDate >= roomData.startDate && bookingInfo.endDate >= roomData.endDate && bookingInfo.startDate <= bookingInfo.endDate) {
+    if(bookingInfo.startDate >= roomData.startDate && bookingInfo.endDate >= roomData.endDate && bookingInfo.startDate <= bookingInfo.endDate && checkDate) {
         const earlierThanUnAvailableDate = bookingInfo.startDate <= roomData.bookingDate.checkinDate && bookingInfo.endDate <= roomData.bookingDate.checkinDate ? true : false ;
         const laterthanUnavailableDate = bookingInfo.endDate >= roomData.bookingDate.checkoutDate && bookingInfo.startDate >= roomData.bookingDate.checkoutDate ? true : false ;
         const matchingAvailableDate = earlierThanUnAvailableDate || laterthanUnavailableDate ? true : false;

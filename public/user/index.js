@@ -1,6 +1,5 @@
 const baseUrl = 'http://localhost:2500/api/v1';
 const token = localStorage.getItem('access-token');
-console.log(token)
 
 
 // Display background color for nav bar when user scroll down
