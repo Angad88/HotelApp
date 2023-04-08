@@ -4,15 +4,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="indexAdmin.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
-    <div class="imageBackground" style="background-image: url(../img/backgroundAdmin.jpeg);">
+    <div class="imageBackground" style="background-image: url(img/backgroundAdmin.jpeg);">
         
-        <nav id="navBar" style="background-image: url(../img/backgroundAdmin2.jpeg);">
+        <nav id="navBar" style="background-image: url(img/backgroundAdmin2.jpeg);">
             <a href="#" class="toggle-button">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -21,9 +21,9 @@
             <div id="greeting" class="title" style="color: white; margin-left: 30px"> HELLO, </div>
             <div class="selection" id="selection">
                 <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;" href="#">Home</a></button>
-                <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="#">Create Hotel</a></button>
+                <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="./admin/hotel.html">Create Hotel</a></button>
                 <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="#">Delete Hotel</a></button>
-                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="adminLogin.html">Log out</a></button>
+                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="./admin/admin.html">Log in</a></button>
             </div>
         </nav>
         <form class="searchDiv" onsubmit="getRooms()">
@@ -50,14 +50,14 @@
                 Your Rooms
                 
             </div>
-            <div class="title" style="text-align: center;padding-top: 0px;">
-                <div id="hotel-card-container2" class="hotel-card-container2">
+            <div class="title" style="text-align: center;padding-top: 0px;"> </div>
+            <div id="hotel-card-container" class="hotel-card-container">
             
-                </div>
+            </div>
+            <div class="title" style="text-align: center;padding-top: 0px;">
                 <button id="searchHotelButton" class="title3 searchButton" style="">Create</button>
                 <button id="searchHotelButton" class="title3 searchButton">Delete</button>
             </div>
-            
         </div>
        
     </div>
