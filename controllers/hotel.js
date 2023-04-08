@@ -126,19 +126,30 @@ const getRoomById = async (req, res) => {
     }   
 }
 
+// function addNewDate(dateType, date) {
+//     let 
+// }
+
 const bookRoom = async (req, res) => {
-    const incomingData = req.body;
     const id = req.params.id;
+    const {checkinDate, checkoutDate} = req.body;
+
     try {
 
-        const roomData = await RoomModel.findByIdAndUpdate(id, incomingData, {returnOriginal: false});
-        res.status(200).json({
-            message: "Book Room Successfully",
-            data: roomData
+        const roomData = await RoomModel.findById(id);
+        console.log(roomData.bookingDate);
+
+        
+        roomData.bookingDate = {checkinDate, checkoutDate};
+
+        await roomData.save();
+        return res.status(200).json({
+            message:"Book Created",
+            roomData
         })
 
     } catch(error) {
-        res.status(500).json({
+        return res.status(500).json({
             message:"There was an error",
             error
         })

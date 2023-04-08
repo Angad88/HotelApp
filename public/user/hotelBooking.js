@@ -45,8 +45,8 @@ async function fetchRoomData() {
     // const newEndDate = new Date(Math.min(new Date(roomData.endDate), checkoutDate));
     // console.log(newStartDate, newEndDate);
 
-    const checkinDate = new Date('2023-04-06'); // user's booking start date
-const checkoutDate = new Date('2023-04-20'); // user's booking end date
+    const checkinDate = new Date('2023-05-08'); // user's booking start date
+const checkoutDate = new Date('2023-06-20'); // user's booking end date
 const roomStartDate = new Date('2023-04-01'); // room's available start date
 const roomEndDate = new Date('2024-04-01'); // room's available end date
 

@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const BookingDate = mongoose.Schema ({
+    checkinDate1: {
+        type: Date
+    },
+    checkoutDate1: {
+        type: Date
+    }
+})
 
 const RoomSchema = mongoose.Schema({
     hotel: {
@@ -32,6 +40,10 @@ const RoomSchema = mongoose.Schema({
     },
     img: {
         type: String
+    },
+    bookingDate: {
+        checkinDate: {type: Date},
+        checkoutDate: {type: Date}
     }
 
 
