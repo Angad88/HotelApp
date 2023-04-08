@@ -132,19 +132,18 @@ const getRoomById = async (req, res) => {
 
 const bookRoom = async (req, res) => {
     const id = req.params.id;
-    const {checkinDate, checkoutDate} = req.body;
+    const {checkinDate, checkoutDate, customerFName, customerLName, customerPhoneNumber, customerEmail} = req.body;
 
     try {
 
         const roomData = await RoomModel.findById(id);
-        console.log(roomData.bookingDate);
 
-        
-        roomData.bookingDate = {checkinDate, checkoutDate};
+        roomData.quantity--;
+        roomData.bookingDate = {checkinDate, checkoutDate, customerFName, customerLName,customerPhoneNumber, customerEmail};
 
         await roomData.save();
         return res.status(200).json({
-            message:"Book Created",
+            message:"Booking Hotel Successfully",
             roomData
         })
 
@@ -155,9 +154,8 @@ const bookRoom = async (req, res) => {
         })
     }
 
-    
-
 }
+
 
 
 

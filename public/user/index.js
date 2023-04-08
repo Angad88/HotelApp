@@ -178,12 +178,17 @@ async function getRooms(event) {
         
             const HotelData = await hotelResponse.json();
     
-            const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;
-            const matchingNumberOfTravelers = numberOfTravelers >= rData[i].beds ? true : false;
-            const matchingAvailableDate = startDate >= rData[i].startDate && endDate <= rData[i].endDate ? true : false;
-            if(matchingDestination && matchingNumberOfTravelers && matchingAvailableDate) {
-               suitableHotel.push(rData[i]._id);
+            if (startDate >= rData[i].startDate && endDate <= rData[i].endDate && startDate <= endDate) {
+                const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;
+                const matchingNumberOfTravelers = numberOfTravelers >= rData[i].beds ? true : false;
+                const earlierThanUnAvailableDate = startDate <= rData[i].bookingDate.checkinDate && endDate <= rData[i].bookingDate.checkinDate ? true : false ;
+                const laterthanUnavailableDate = endDate >= rData[i].bookingDate.checkoutDate && startDate >= rData[i].bookingDate.checkoutDate ? true : false ;
+                const matchingAvailableDate = earlierThanUnAvailableDate || laterthanUnavailableDate ? true : false;
+                if(matchingDestination && matchingNumberOfTravelers && matchingAvailableDate) {
+                   suitableHotel.push(rData[i]._id);
+                }
             }
+            
         }
 
         // Push booking info into an object and save it on local storage

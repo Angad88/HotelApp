@@ -43,8 +43,13 @@ const RoomSchema = mongoose.Schema({
     },
     bookingDate: {
         checkinDate: {type: Date},
-        checkoutDate: {type: Date}
-    }
+        checkoutDate: {type: Date},
+        customerFName: {type: String},
+        customerLName: {type: String},
+        customerPhoneNumber: {type: Number},
+        customerEmail: {type: String}
+    },
+    
 
 
 }, {

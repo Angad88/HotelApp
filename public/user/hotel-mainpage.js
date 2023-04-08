@@ -26,7 +26,6 @@ const getRoomId = (event) => {
     const bookingInfo = {};
 
     const roomId = event.target.id;
-    const numberOfTravelers = document.getElementById('numberOfTravelers').value;
     const checkinDate = document.getElementById('startDate').value;
     const checkoutDate = document.getElementById('endDate').value;
 
@@ -36,7 +35,6 @@ const getRoomId = (event) => {
 
     // push those information into an object and save it in local storage
     bookingInfo.roomId = roomId;
-    bookingInfo.numberOfTravelers  = numberOfTravelers;
     bookingInfo.startDate = userStartDate.toLocaleDateString();
     bookingInfo.endDate = userEndDate.toLocaleDateString();
     localStorage.setItem('bookingInfo', JSON.stringify(bookingInfo));
@@ -116,6 +114,7 @@ async function getHotelPage() {
                     <div class="hotel-info">
                         <div class="hotel-title">
                             <h3>CA$${roomData[i].price}</h3>
+                            <p>per night</p>
                             <h4>${roomData[i].beds} beds</h4>
                         </div>
                         <div class="room-quantity">
