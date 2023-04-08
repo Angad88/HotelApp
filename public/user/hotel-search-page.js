@@ -53,7 +53,10 @@ async function getRooms() {
 
     try {
         if (roomIdArray.length === 0) {
-            hotelCardContainer.innerHTML += "<h1 style='color:red';>Requirements don't meet</h1>"
+            hotelCardContainer.innerHTML += "<h1 style='color:red';>Sorry we couldn't found your room</h1>"
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 5000)
         } else {
             for (let i = 0; i < roomIdArray.length; i++) {
 
@@ -65,10 +68,11 @@ async function getRooms() {
                 
                 // Format the startDate available and endDate available
                 const startDate = new Date(roomData.startDate);
-                const endDate = new Date(roomData.endDate);
+                const endDate = new Date(startDate);
+                endDate.setDate(startDate.getDate() + 1);
         
-                const formattedStartDate = startDate.toLocaleDateString();
-                const formattedEndDate = endDate.toLocaleDateString();
+                const formattedStartDate = startDate.toDateString();
+                const formattedEndDate = endDate.toDateString();
         
                 // Get destination and numberOfTravelers
                 
@@ -119,7 +123,7 @@ async function getRooms() {
                     <div class="hotel-availableDate">
                         <div>
                             <h4>Day Available</h4>
-                            <p>${formattedStartDate}-${formattedEndDate}</p>
+                            <p>${formattedStartDate.slice(3)}-${formattedEndDate.slice(3)}</p>
                             <p style="width: 100%; font-size: smaller">${isBreakfastIncluded}</p>
                         </div>
                         <button id=${roomData._id} class="book-button" onclick="getRoomId(event)">Book Us</button>

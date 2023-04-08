@@ -30,8 +30,13 @@ const getRoomId = (event) => {
     const checkoutDate = document.getElementById('endDate').value;
 
     // handle date type
-    const userStartDate = new Date(checkinDate);
-    const userEndDate = new Date(checkoutDate);
+    const userStartDateBefore = new Date(checkinDate);
+    const userStartDate = new Date(userStartDateBefore);
+    userStartDate.setDate(userStartDateBefore.getDate() + 1);
+
+    const userEndDateBefore = new Date(checkoutDate);
+    const userEndDate = new Date(userEndDateBefore);
+    userEndDate.setDate(userEndDateBefore.getDate() + 1);
 
     // push those information into an object and save it in local storage
     bookingInfo.roomId = roomId;
@@ -52,14 +57,12 @@ function getUserInfo() {
         window.location.href = "../user/login.html";
 
     }
-    userTitle.innerHTML += `${userInfo.name.toUpperCase()}!`;
     toLoginPage.remove();
     selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" onclick="signout()">Log out</a></button>`
 }
 
 async function getHotelPage() {
     let hotelId =  localStorage.getItem('hotelId');
-    console.log(hotelId);
 
     try {
         const hotelResponse = await fetch(`${baseUrl}/admins/${hotelId}`, {
@@ -98,11 +101,15 @@ async function getHotelPage() {
             }
 
             // handle with date type
-            const startDate = new Date(roomData[i].startDate);
-            const endDate = new Date(roomData[i].endDate);
+            const startDateBefore = new Date(roomData[i].startDate);
+            const startDate = new Date(startDateBefore);
+            startDate.setDate(startDateBefore.getDate() + 1);
+            
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + 1);
 
-            const formattedStartDate = startDate.toLocaleDateString();
-            const formattedEndDate = endDate.toLocaleDateString();
+            const formattedStartDate = startDate.toDateString();
+            const formattedEndDate = endDate.toDateString();
 
             if (roomData[i].hotel === hotelId) {
                 hotelCardContainer.innerHTML += `<div class="hotel-card" >
@@ -131,7 +138,7 @@ async function getHotelPage() {
                     <div class="hotel-availableDate">
                         <div>
                             <h4>Day Available</h4>
-                            <p>${formattedStartDate}-${formattedEndDate}</p>
+                            <p style="font-size: smaller">${formattedStartDate.slice(3)}-${formattedEndDate.slice( 3)}</p>
                             <p style="width: 100%; font-size: smaller">${isBreakfastIncluded}</p>
                         </div>
                         <button id=${roomData[i]._id} class="book-button" onclick="getRoomId(event)">Book Us</button>

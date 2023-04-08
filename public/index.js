@@ -111,60 +111,64 @@ function getAllHotel() {
     
 }
 
-
-async function getRooms(event) {
+function alertToLogin(event) {
     event.preventDefault();
-
-    const destination = document.getElementById('destination').value;
-    const destinationCapitalize = destination.charAt(0).toUpperCase() + destination.slice(1);   
-
-    const numberOfTravelers = document.getElementById('numberOfTravelers').value;
-    const startDate = document.getElementById('startDate').value;
-    const endDate = document.getElementById('endDate').value;
-
-    try {
-        const roomResponse = await fetch(`${baseUrl}/hotels`, {
-            method: "GET",
-            headers: {
-                'Content-type': 'application/json'
-            }
-        });
-        const RoomData = await roomResponse.json();
-        const rData = RoomData.data;
-
-        const suitableHotel = [];
-        for(let i = 0; i < rData.length; i++) {
-            let hotelID;
-            hotelID = rData[i].hotel;
-            const hotelResponse = await fetch(`${baseUrl}/admins/${hotelID}`, {
-                method: "GET",
-                headers: {
-                    'Content-type' : 'application/json'
-                }
-            });
-        
-            const HotelData = await hotelResponse.json();
-    
-            const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;
-            const matchingNumberOfTravelers = numberOfTravelers >= rData[i].beds ? true : false;
-            console.log(matchingNumberOfTravelers, rData[i].beds);
-            const matchingAvailableDate = startDate >= rData[i].startDate && endDate <= rData[i].endDate ? true : false;
-            if(matchingDestination && matchingNumberOfTravelers && matchingAvailableDate) {
-               suitableHotel.push(rData[i]);
-            }
-        }
-
-        console.log(suitableHotel);
-    } catch(error) {
-        console.log(error)
-    }
-    
-    
-    
+    alert('You need to login to access');
+    window.location.href = './user/login.html'
 }
+
+// async function getRooms(event) {
+//     event.preventDefault();
+
+//     const destination = document.getElementById('destination').value;
+//     const destinationCapitalize = destination.charAt(0).toUpperCase() + destination.slice(1);   
+
+//     const numberOfTravelers = document.getElementById('numberOfTravelers').value;
+//     const startDate = document.getElementById('startDate').value;
+//     const endDate = document.getElementById('endDate').value;
+
+//     try {
+//         const roomResponse = await fetch(`${baseUrl}/hotels`, {
+//             method: "GET",
+//             headers: {
+//                 'Content-type': 'application/json'
+//             }
+//         });
+//         const RoomData = await roomResponse.json();
+//         const rData = RoomData.data;
+
+//         const suitableHotel = [];
+//         for(let i = 0; i < rData.length; i++) {
+//             let hotelID;
+//             hotelID = rData[i].hotel;
+//             const hotelResponse = await fetch(`${baseUrl}/admins/${hotelID}`, {
+//                 method: "GET",
+//                 headers: {
+//                     'Content-type' : 'application/json'
+//                 }
+//             });
+        
+//             const HotelData = await hotelResponse.json();
+    
+//             const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;
+//             const matchingNumberOfTravelers = numberOfTravelers >= rData[i].beds ? true : false;
+//             console.log(matchingNumberOfTravelers, rData[i].beds);
+//             const matchingAvailableDate = startDate >= rData[i].startDate && endDate <= rData[i].endDate ? true : false;
+//             if(matchingDestination && matchingNumberOfTravelers && matchingAvailableDate) {
+//                suitableHotel.push(rData[i]);
+//             }
+//         }
+
+//         console.log(suitableHotel);
+//     } catch(error) {
+//         console.log(error)
+//     }
+    
+    
+    
+// }
 
 
 
 getAllHotel();
 getBestHotel();
-getUserInfo();

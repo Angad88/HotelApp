@@ -152,8 +152,18 @@ async function getRooms(event) {
     const startDate = document.getElementById('startDate').value;
     const endDate = document.getElementById('endDate').value;
 
-    const userStartDate = new Date(startDate);
-    const userEndDate = new Date(endDate);
+    console.log(startDate, endDate);
+
+    // Get a right date that user want to book
+    // If I don't plus 1, it just gives me the previous date of what user choose
+    const userStartDateBefore = new Date(startDate);
+    const userStartDate = new Date(userStartDateBefore);
+    userStartDate.setDate(userStartDateBefore.getDate() + 1);
+
+    const userEndDateBefore = new Date(endDate);
+    const userEndDate = new Date(userEndDateBefore);
+    userEndDate.setDate(userEndDateBefore.getDate() + 1);
+   
 
     try {
         const roomResponse = await fetch(`${baseUrl}/hotels`, {
@@ -176,6 +186,7 @@ async function getRooms(event) {
             });
         
             const HotelData = await hotelResponse.json();
+            console.log(rData[i].endDate, userEndDate);
     
             if (startDate >= rData[i].startDate && endDate <= rData[i].endDate && startDate <= endDate) {
                 const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;

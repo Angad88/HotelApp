@@ -76,7 +76,13 @@ async function fetchRoomData() {
     const roomData = response.roomData;
     
     // Checking the available date is right
-    if(bookingInfo.startDate >= roomData.startDate && bookingInfo.endDate >= roomData.endDate && bookingInfo.startDate <= bookingInfo.endDate && checkDate) {
+    // ************************* Something is wrong with this one *************************
+    const bookingStartDate = new Date(bookingInfo.startDate);
+    const roomStartDate = new Date(roomData.startDate);
+    const bookingEndDate = new Date(bookingInfo.endDate);
+    const roomEndDate = new Date(roomData.endDate);
+    
+    if(bookingStartDate >= roomStartDate && bookingEndDate <= roomEndDate && bookingInfo.startDate <= bookingInfo.endDate && checkDate) {
         const earlierThanUnAvailableDate = bookingInfo.startDate <= roomData.bookingDate.checkinDate && bookingInfo.endDate <= roomData.bookingDate.checkinDate ? true : false ;
         const laterthanUnavailableDate = bookingInfo.endDate >= roomData.bookingDate.checkoutDate && bookingInfo.startDate >= roomData.bookingDate.checkoutDate ? true : false ;
         const matchingAvailableDate = earlierThanUnAvailableDate || laterthanUnavailableDate ? true : false;
@@ -99,6 +105,10 @@ async function fetchRoomData() {
             const tax = Math.round((price * 0.12) * 100)/ 100;
             const total = Math.round((price + tax) * 100) / 100;
         
+            // Get formatted
+
+            const formattedStartDate = checkinDate.toDateString().slice(3);
+            const formattedEndDate = checkoutDate.toDateString().slice(3);
         
             userRoomContainer.innerHTML += `<div class="user-room-card">
             <div class="background-card" style="background-image: url(${roomData.img}); height: 100%;">
@@ -110,8 +120,8 @@ async function fetchRoomData() {
                     <h4>${roomData.beds} beds</h4>
                 </div>
                 <div class="checkinDate">
-                    <h5>Check in: ${bookingInfo.startDate}</h5>
-                    <h5>Check-out: ${bookingInfo.endDate}</h5>
+                    <h5>Check in: ${formattedStartDate}</h5>
+                    <h5>Check-out: ${formattedEndDate}</h5>
                 </div>
                 
                 <div style="display:grid; justify-content:center; grid-template-columns: 100%;align-items: center; grid-column: 1/-1; margin-right: 10px;">
