@@ -152,7 +152,6 @@ async function getRooms(event) {
     const startDate = document.getElementById('startDate').value;
     const endDate = document.getElementById('endDate').value;
 
-    console.log(startDate, endDate);
 
     // Get a right date that user want to book
     // If I don't plus 1, it just gives me the previous date of what user choose
@@ -186,14 +185,23 @@ async function getRooms(event) {
             });
         
             const HotelData = await hotelResponse.json();
-            console.log(rData[i].endDate, userEndDate);
-    
-            if (startDate >= rData[i].startDate && endDate <= rData[i].endDate && startDate <= endDate) {
+
+
+            // Convert all Date type into Date object
+            const roomDataStartDate = new Date(rData[i].startDate);
+            const roomDataEndDate = new Date(rData[i].endDate);
+            const unavailableCheckinDate  = new Date(rData[i].bookingDate.checkinDate);
+            const unavailableCheckoutDate = new Date(rData[i].bookingDate.checkoutDate);
+
+            
+            
+            if (userStartDate.getTime() >= roomDataStartDate.getTime() && userEndDate.getTime() <= roomDataEndDate.getTime() && userStartDate.getTime() <= userEndDate.getTime()) {
                 const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;
                 const matchingNumberOfTravelers = numberOfTravelers >= rData[i].beds ? true : false;
-                const earlierThanUnAvailableDate = startDate <= rData[i].bookingDate.checkinDate && endDate <= rData[i].bookingDate.checkinDate ? true : false ;
-                const laterthanUnavailableDate = endDate >= rData[i].bookingDate.checkoutDate && startDate >= rData[i].bookingDate.checkoutDate ? true : false ;
+                const earlierThanUnAvailableDate = userStartDate.getTime() <= unavailableCheckinDate.getTime() && userEndDate.getTime() <= unavailableCheckinDate.getTime() ? true : false ;
+                const laterthanUnavailableDate = userEndDate.getTime() >= unavailableCheckoutDate.getTime() && userStartDate.getTime() >=  unavailableCheckoutDate.getTime() ? true : false ;
                 const matchingAvailableDate = earlierThanUnAvailableDate || laterthanUnavailableDate ? true : false;
+
                 if(matchingDestination && matchingNumberOfTravelers && matchingAvailableDate) {
                    suitableHotel.push(rData[i]._id);
                 }

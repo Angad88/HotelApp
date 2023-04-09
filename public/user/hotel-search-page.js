@@ -53,7 +53,7 @@ async function getRooms() {
 
     try {
         if (roomIdArray.length === 0) {
-            hotelCardContainer.innerHTML += "<h1 style='color:red';>Sorry we couldn't found your room</h1>"
+            hotelCardContainer.innerHTML += "<h1 style='color:red';>Sorry, your room couldn't be found</h1>"
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 5000)

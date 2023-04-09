@@ -82,9 +82,12 @@ async function fetchRoomData() {
     const roomEndDate = new Date(roomData.endDate);
 
     // Checking the checkinDate is later than the available start date, the checkoutDate is earlier than the available end date and the checkinDate shoud be earlier than the checkoutDate and user must enter the date
-    if(bookingStartDate >= roomStartDate && bookingEndDate <= roomEndDate && bookingStartDate <= bookingEndDate && checkDate) {
-        const earlierThanUnAvailableDate = bookingInfo.startDate <= roomData.bookingDate.checkinDate && bookingInfo.endDate <= roomData.bookingDate.checkinDate ? true : false ;
-        const laterthanUnavailableDate = bookingInfo.endDate >= roomData.bookingDate.checkoutDate && bookingInfo.startDate >= roomData.bookingDate.checkoutDate ? true : false ;
+    if(bookingStartDate.getTime() >= roomStartDate.getTime() && bookingEndDate.getTime() <= roomEndDate.getTime() && bookingStartDate.getTime() <= bookingEndDate.getTime() && checkDate) {
+        const unavailableCheckinDate = new Date(roomData.bookingDate.checkinDate);
+        const unavailableCheckoutDate = new Date(roomData.bookingDate.checkoutDate);
+
+        const earlierThanUnAvailableDate = bookingStartDate.getTime() <= unavailableCheckinDate.getTime() && bookingEndDate.getTime() <= unavailableCheckinDate.getTime() ? true : false ;
+        const laterthanUnavailableDate = bookingEndDate.getTime() >= unavailableCheckoutDate.getTime() && bookingStartDate.getTime() >= unavailableCheckoutDate.getTime() ? true : false ;
         const matchingAvailableDate = earlierThanUnAvailableDate || laterthanUnavailableDate ? true : false;
         if (matchingAvailableDate) {
             const hotelResponse = await fetch(`${baseUrl}/admins/${roomData.hotel}`, {
