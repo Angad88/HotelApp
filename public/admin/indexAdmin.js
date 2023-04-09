@@ -23,7 +23,7 @@ function getadminInfo() {
     const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
     if(!adminInfo) {
         alert("You need to log in to get access");
-        window.location.href = "./admin/login.html";
+        window.location.href = "./admin/adminLogin.html";
 
     }
     adminTitle.innerHTML += `${adminInfo.name.toUpperCase()}!`;
@@ -92,4 +92,4 @@ const userTitle = document.getElementById('greeting');
 const toLoginPage = document.getElementById('toLoginPage');
 
 getBestHotel();
-getUserInfo();
+getAdminInfo();

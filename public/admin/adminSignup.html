@@ -6,18 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../user/loginstyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <script src="index.js" defer></script>
+    <script src="admin.js" defer></script>
     <title>Document</title>
 </head>
 
 <body style="background-image: url(../img/backgroundAdmin.jpeg);">
 
-    <form class="border-aqua bg-white">
+    <form class="border-aqua bg-white"onsubmit="signupFormSubmit(event)">
 
         <div class="text-center">
             <h1>Admin Sign Up</h1>
         </div>
 
+        <div id="notification">
+
+        </div>
 
         <div class="inputContainer">
             <label>Email</label>
