@@ -1,0 +1,21 @@
+.card-button{
+    position: absolute;
+    
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+
+}
+
+.delete-button{
+    right: -10;
+    top: -15;
+    background-color: red;
+    color: white
+}
+
+.edit-button{
+    right: 20;
+    top: -15;
+}

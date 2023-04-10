@@ -86,7 +86,7 @@ const baseUrl = 'http://localhost:2500/api/v1';
 const alertBox = document.getElementById('notification');
 const loginFormSubmit = (event) => {
     event.preventDefault();
-
+    console.log('hi');
     const email = document.getElementById("email");
     const password = document.getElementById("password");
 
@@ -176,5 +176,4 @@ const signupFormSubmit = (event) => {
     }).catch((error) => {
         console.log(error);
     })
-}
 }

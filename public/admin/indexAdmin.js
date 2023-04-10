@@ -19,7 +19,7 @@ toggleButton.addEventListener('click', () => {
     selectionBar.classList.toggle('active');
 })
 
-function getadminInfo() {
+function getAdminInfo() {
     const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
     if(!adminInfo) {
         alert("You need to log in to get access");
@@ -47,7 +47,10 @@ function getBestHotel() {
         const mostFourPopularHotel = sortedData.slice(0, 4);
         
         for (let i = 0; i < mostFourPopularHotel.length; i++) {
-            hotelCardContainer.innerHTML += `<div class="hotel-card">
+            hotelCardContainer.innerHTML += `<div class="hotel-card" style="position: relative">
+            <button class="card-button edit-button" > <i class='fas fa-pen'></i></button>
+            <button class="card-button delete-button"><i class="fa fa-trash"></i></button>
+
             <div class="background-card" style="background-image: url(${mostFourPopularHotel[i].img});">
 
             </div>
