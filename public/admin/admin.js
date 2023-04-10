@@ -1,86 +1,86 @@
-<<<<<<< Updated upstream
-const baseUrl = 'http://localhost:2500/api/v1';
 
-const alertBox = document.getElementById('notification');
-const loginFormSubmit = (event) => {
-    event.preventDefault();
+// const baseUrl = 'http://localhost:2500/api/v1';
 
-    const email = document.getElementById("email");
-    const password = document.getElementById("password");
+// const alertBox = document.getElementById('notification');
+// const loginFormSubmit = (event) => {
+//     event.preventDefault();
 
-    const newAdmin = {
-        email: email.value,
-        password: password.value 
-    }
+//     const email = document.getElementById("email");
+//     const password = document.getElementById("password");
 
-    fetch(`${baseUrl}/users/login`, {
-        method: "POST",
-        body: JSON.stringify(newAdmin),
-        headers: {
-            'Content-Type' : "application/json"
-        }
-    }).then((response) => {
-        return response.json();
+//     const newAdmin = {
+//         email: email.value,
+//         password: password.value 
+//     }
 
-    }).then((data) => {
-        if (data.token) {
-            localStorage.setItem('access-token', data.token),
-            localStorage.setItem('current-user', JSON.stringify(data.admin));
-            alertBox.innerHTML = "";
-            alertBox.innerHTML += `<div class="alert-successfully">${data.message}</div>`
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 3000);
-        } else {
-            alertBox.innerHTML = "";
-            alertBox.innerHTML += `<div class="alert-error">${data.message}</div>`
-        }
-    })
-}
+//     fetch(`${baseUrl}/users/login`, {
+//         method: "POST",
+//         body: JSON.stringify(newAdmin),
+//         headers: {
+//             'Content-Type' : "application/json"
+//         }
+//     }).then((response) => {
+//         return response.json();
 
-const signupFormSubmit = (event) => {
-    event.preventDefault();
+//     }).then((data) => {
+//         if (data.token) {
+//             localStorage.setItem('access-token', data.token),
+//             localStorage.setItem('current-user', JSON.stringify(data.admin));
+//             alertBox.innerHTML = "";
+//             alertBox.innerHTML += `<div class="alert-successfully">${data.message}</div>`
+//             setTimeout(() => {
+//                 window.location.href = 'index.html';
+//             }, 3000);
+//         } else {
+//             alertBox.innerHTML = "";
+//             alertBox.innerHTML += `<div class="alert-error">${data.message}</div>`
+//         }
+//     })
+// }
 
-    const name = document.getElementById('signup-name');
-    const email = document.getElementById('signup-email');
-    const password = document.getElementById('signup-password');
+// const signupFormSubmit = (event) => {
+//     event.preventDefault();
 
-    const newUser = {
-        name: name.value,
-        email: email.value,
-        password: password.value
-    }
+//     const name = document.getElementById('signup-name');
+//     const email = document.getElementById('signup-email');
+//     const password = document.getElementById('signup-password');
 
-    console.log(newAdmin);
+//     const newUser = {
+//         name: name.value,
+//         email: email.value,
+//         password: password.value
+//     }
 
-    fetch(`${baseUrl}/users`, {
-        method: "POST",
-        body: JSON.stringify(newAdmin),
-        headers: {
-            'Content-type': 'application/json'
-        }
-    }).then((response) => {
-        return response.json();
-    }).then((data) => {
-        alertBox.innerHTML = "";
+//     console.log(newAdmin);
+
+//     fetch(`${baseUrl}/users`, {
+//         method: "POST",
+//         body: JSON.stringify(newAdmin),
+//         headers: {
+//             'Content-type': 'application/json'
+//         }
+//     }).then((response) => {
+//         return response.json();
+//     }).then((data) => {
+//         alertBox.innerHTML = "";
        
         
-        if(data.error) {
-            alertBox.innerHTML += `<div class="alert-error">${data.message}</div>`
-        }
-        else {
-            alertBox.innerHTML += `<div class="alert-successfully">${data.message}</div>`;
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 2000);
-        }
+//         if(data.error) {
+//             alertBox.innerHTML += `<div class="alert-error">${data.message}</div>`
+//         }
+//         else {
+//             alertBox.innerHTML += `<div class="alert-successfully">${data.message}</div>`;
+//             setTimeout(() => {
+//                 window.location.href = 'login.html';
+//             }, 2000);
+//         }
        
-        return data;
-    }).catch((error) => {
-        console.log(error);
-    })
+//         return data;
+//     }).catch((error) => {
+//         console.log(error);
+//     })
 
-=======
+
 const baseUrl = 'http://localhost:2500/api/v1';
 
 const alertBox = document.getElementById('notification');
@@ -105,6 +105,7 @@ const loginFormSubmit = (event) => {
         return response.json();
 
     }).then((data) => {
+        console.log(data);
         if (data.token) {
             localStorage.setItem('access-token', data.token),
             localStorage.setItem('current-admin', JSON.stringify(data.admin));
@@ -175,6 +176,5 @@ const signupFormSubmit = (event) => {
     }).catch((error) => {
         console.log(error);
     })
-
->>>>>>> Stashed changes
+}
 }
