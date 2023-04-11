@@ -22,7 +22,7 @@ function getHotelInfo() {
     const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
     if(!adminInfo) {
         alert("You need to log in to get access");
-        window.location.href = "adminLogin.html";
+        window.location.href = "../adminLogin.html";
 
     }
     adminTitle.innerHTML += `for ${adminInfo.name}`;
@@ -49,14 +49,22 @@ const signupFormSubmit = (event) => {
     const startDate = document.getElementById('start');
     const endDate = document.getElementById('end');
     const img = document.getElementById('image');
+    let isBreakfastIncluded1 = false;
+
+    if (isBreakfastIncluded.value == "on") {
+        let isBreakfastIncluded1 = true;
+    }
+    else {
+        let isBreakfastIncluded1 = false;
+    }
 
 
 
 
     const newHotel = {
-        name: adminInfo1.name,
+        hotel: adminInfo1.name,
         beds: beds.value,
-        isBreakfastIncluded: isBreakfastIncluded.value,
+        isBreakfastIncluded: isBreakfastIncluded1.value,
         price: price.value,
         quantity: quantity.value,
         startDate: startDate.value,

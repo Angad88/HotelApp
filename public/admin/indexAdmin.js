@@ -38,8 +38,9 @@ function getAdminInfo() {
 
 
 function getBestHotel() {
+    const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
     const hotelCardContainer = document.getElementById('hotel-card-container');
-    fetch(`${baseUrl}/admins`, {
+    fetch(`${baseUrl}/admins/${adminInfo.id}`, {
         method:"GET",
         headers: {
             'Content-type': 'application/json'

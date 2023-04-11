@@ -137,6 +137,27 @@ body, html {
   background-image: url("../img/background1.jpeg");
 }
 
+.searchButton2{
+  margin-top: 40px;
+  width: 200px;
+  height: 40px;
+  border-color: #dedddd;
+  border-style: none;
+  background-color: #dedddd;
+  color: #474747;
+  padding: 10px 0px 10px 0px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+
+.searchButton2:hover{
+  background-color: #a2a2a2;
+}
+
+
 .searchDiv {
   margin: 0px 0px 0px 40px;
 }
