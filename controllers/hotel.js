@@ -81,9 +81,10 @@ const updateRoom = async (req, res) => {
     let decodeToken;
 
     if(token) {
-
+        decodeToken = jwt.verify(token, process.env.SECRETKEY);
         try {
-            const ifAdminExists = jwt.verify(process.env.SECRETKEY);
+            const ifAdminExists = await AdminModel.findOne({email: decodeToken.email})
+            
             if(ifAdminExists) {
                 const data = await RoomModel.findByIdAndUpdate(id, incomingData, {returnOriginal: false});
                 return res.status(200).json({
