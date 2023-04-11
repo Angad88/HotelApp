@@ -37,43 +37,58 @@ const getAllRoom = async (req, res) => {
     }
 }
 
+// const deleteRoom = async (req, res) => {
+//     const id = req.params.id;
+//     const token = req.headers?.authorization?.split(" ")[1];
+//     let decodeToken;
+
+//     if(token) {
+//         decodeToken = jwt.verify(token, process.env.SECRETKEY);
+
+//         try{
+//             const ifAdminExists = await AdminModel.findOne({email: decodeToken.email});
+
+//             if (ifAdminExists) {
+//                 const data = await RoomModel.findByIdAndDelete(id);
+//                 return res.status(200).json({
+//                     message: "Successfully Delete Room",
+//                     data
+//                 })
+//             } else {
+//                 return res.status(401).json({
+//                     message: "You are not authorized",
+//                     error
+//                 })
+//             }
+//         } catch(error) {
+//             return res.status(500).json({
+//                 message: "There was an error",
+//                 error
+//             })
+//         }
+//     } else {
+//         return res.status(401).json({
+//             message: "You need to provide access token"
+//         })
+//     }
+// }
+
 const deleteRoom = async (req, res) => {
     const id = req.params.id;
-    const token = req.headers?.authorization?.split(" ")[1];
-    let decodeToken;
-
-    if(token) {
-        decodeToken = jwt.verify(token, process.env.SECRETKEY);
-
-        try{
-            const ifAdminExists = await AdminModel.findOne({email: decodeToken.email});
-
-            if (ifAdminExists) {
-                const data = await RoomModel.findByIdAndDelete(id);
-                return res.status(200).json({
-                    message: "Successfully Delete Room",
-                    data
-                })
-            } else {
-                return res.status(401).json({
-                    message: "You are not authorized",
-                    error
-                })
-            }
-        } catch(error) {
-            return res.status(500).json({
-                message: "There was an error",
-                error
-            })
-        }
-    } else {
-        return res.status(401).json({
-            message: "You need to provide access token"
+    
+    try {
+        const adminData = await RoomModel.findByIdAndDelete(id);
+        return res.status(200).json({
+            message: `Deleted User ${adminData.name} Successfully`,
+            adminData
+        })
+    }catch(error) {
+        return res.status(500).json({
+            message: "There was an error",
+            error
         })
     }
 }
-
-
 
 const updateRoom = async (req, res) => {
     const incomingData = req.body;
