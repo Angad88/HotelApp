@@ -39,8 +39,9 @@ getHotelInfo();
 
 const adminInfo1 = JSON.parse(localStorage.getItem('current-admin'));
 
-const signupFormSubmit = (event) => {
+const signupFormSubmit = async (event) => {
     event.preventDefault();
+    console.log('hi');
 
     const beds = document.getElementById('beds');
     const isBreakfastIncluded = document.getElementById('breakfast');
@@ -74,31 +75,30 @@ const signupFormSubmit = (event) => {
 
     console.log(newHotel);
 
-    fetch(`${baseUrl}/hotels`, {
+    const roomResponse = await fetch(`${baseUrl}/hotels`, {
         method: "POST",
         body: JSON.stringify(newHotel),
         headers: {
-            'Content-type': 'application/json',
+            'Content-type': 'application/json'
 
         }
-    }).then((response) => {
-        return response.json();
-    }).then((data) => {
-        alertBox.innerHTML = "";
+    })
+    const response = await roomResponse.json(); 
+    console.log(response);
+        // alertBox.innerHTML = "";
+        
        
         
-        if(data.error) {
-            alertBox.innerHTML += `<div class="alert-error">${data.message}</div>`
-        }
-        else {
-            alertBox.innerHTML += `<div class="alert-successfully">${data.message}</div>`;
-            setTimeout(() => {
-                window.location.href = '../indexAdmin.html';
-            }, 2000);
-        }
+        // if(data.error) {
+        //     alertBox.innerHTML += `<div class="alert-error">${data.message}</div>`
+        // }
+        // else {
+        //     alertBox.innerHTML += `<div class="alert-successfully">${data.message}</div>`;
+        //     setTimeout(() => {
+        //         window.location.href = '../indexAdmin.html';
+        //     }, 2000);
+        // }
        
-        return data;
-    }).catch((error) => {
-        console.log(error);
-    })
+        // return data;
+
 }

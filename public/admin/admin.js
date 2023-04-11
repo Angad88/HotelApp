@@ -94,3 +94,5 @@ const signupFormSubmit = (event) => {
         console.log(error);
     })
 }
+
+const updateUser

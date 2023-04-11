@@ -5,6 +5,9 @@ console.log(token)
 const nav = document.querySelector('nav');
 
 
+const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
+
+
 const selection = document.getElementById('selection');
 const adminTitle = document.getElementById('greeting');
 const toLoginPage = document.getElementById('toLoginPage');
@@ -25,7 +28,6 @@ toggleButton.addEventListener('click', () => {
 })
 
 function getAdminInfo() {
-    const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
     if(!adminInfo) {
         alert("You need to log in to get access");
         window.location.href = "adminLogin.html";
@@ -40,7 +42,8 @@ function getAdminInfo() {
 function getBestHotel() {
     const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
     const hotelCardContainer = document.getElementById('hotel-card-container');
-    fetch(`${baseUrl}/admins/${adminInfo.name}`, {
+
+    fetch(`${baseUrl}/hotels/`, {
         method:"GET",
         headers: {
             'Content-type': 'application/json'
@@ -48,54 +51,108 @@ function getBestHotel() {
     }).then((response) => {
         return response.json();
     }).then((adminData) => {
-        const hotelData = adminData.data;
-        const sortedData = hotelData.sort((a, b) => b.reviewStars - a.reviewStars);
-        const mostFourPopularHotel = sortedData.slice(0, 4);
-        
-        for (let i = 0; i < mostFourPopularHotel.length; i++) {
-            hotelCardContainer.innerHTML += `<div class="hotel-card" style="position: relative">
-            <button class="card-button edit-button" > <i class='fas fa-pen'></i></button>
-            <button class="card-button delete-button" onclick="deleteHotelFunction()"><i class="fa fa-trash"></i></button>
+        console.log(adminData);
+        let adminArray = [];
+        for (let i = 0; i < adminData.data.length; i++) {
 
-            <div class="background-card" style="background-image: url(${mostFourPopularHotel[i].img});">
-
-            </div>
-            <div class="hotel-info-container">
-
-                <div class="hotel-info">
-                    <div class="hotel-title">
-                        <h3>${mostFourPopularHotel[i].name}</h3>
-                        <h4>${mostFourPopularHotel[i].city}</h4>
-                    </div>
-                    <div class="reviewStars">
-                        <span>${mostFourPopularHotel[i].reviewStars}</span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div style="display:grid; justify-content:center; grid-template-columns: 100%;align-items: center; grid-column: 1/-1; margin-right: 10px">
-                        <div class="grayLine" style="margin: bottom 50px ; height: 1px">
-                        </div>
-                    </div>
-
-                </div>    
-                
-
-                <div class="hotel-description">
-                    <h3>Description</h3>
-                    <p>${mostFourPopularHotel[i].description.slice(0,100)}...</p>
+            if (adminData.data[i].hotel == adminInfo._id) {
+                adminArray.push(adminData.data[i]._id);
+                console.log(adminData.data[i]._id);
+                hotelCardContainer.innerHTML += `<div class="hotel-card" style="position:relative;">
+                <button class="card-button edit-button" onclick="updateRoom(event)"> <i id=${adminData.data[i]._id} class='fas fa-pen'></i></button>
+                <button class="card-button delete-button" onclick="deleteRoom(event)"><i id=${adminData.data[i]._id} class="fa fa-trash"></i></button>
+                <div class="background-card" style="background-image: url(${adminData.data[i].img});">
+    
                 </div>
-                
-            </div>
+                <div class="hotel-info-container">
+    
+                    <div class="hotel-info">
+                        <div class="hotel-title">
+                            <h3>Number of beds</h5>
+                            <h3>${adminData.data[i].beds}</h3>
+                            <h3>Price</h3>
+                            <h3>${adminData.data[i].price}</h3>
+                            <h3>Quantity</h3>
+                            <h4>${adminData.data[i].quantity}</h4>
+                        </div>
+                        <div class="reviewStars">
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div style="display:grid; justify-content:center; grid-template-columns: 100%;align-items: center; grid-column: 1/-1; margin-right: 10px">
+                            <div class="grayLine" style="margin: bottom 50px ; height: 1px">
+                            </div>
+                        </div>
+    
+                    </div>    
+                    
 
-        </div>`
+                    
+                </div>
+    
+            </div>`
+            }
         }
+        console.log(adminArray);
+
         
+    
         return adminData;
     }).catch((error) => {
         console.log(error);
     })
 }
 
-function deleteHotelFunction() {
+// function fetchAdmin() {
+//     fetch(`${baseUrl}/admins/${adminInfo._id}`, {
+//         method:"GET",
+//         headers: {
+//             'Content-type': 'application/json'
+//         }
+//     }).then((response) => {
+//         return response.json();
+//     }).then((adminData) => {
+//         console.log("adminFetch");
+//         console.log(adminData);
+//     }).catch((error) => {
+//         console.log(error);
+//     })
+// }
+
+// fetchAdmin();
+function deleteRoom(event) {
+    console.log('delete');
+    let idAdmin = event.target.id;
+
+    console.log(idAdmin);
+    let text = confirm("Are you sure you want to Delete this Hotel?");
+    if (text == true) {
+        fetch(`${baseUrl}/hotels/${idAdmin}`, {
+            method:"DELETE",
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }).then((response) => {
+            return response.json();
+        }).then((adminData) => {
+            console.log(adminData);
+            window.location.href = "indexAdmin.html";
+            return adminData;
+        }).catch((error) => {
+            console.log(error);
+        })
+            
+      } else {
+            window.location.href = "indexAdmin.html";
+      }
+
+
+}
+
+function updateRoom(event) {
+    const idAdmin  = event.target.id;
+    localStorage.setItem("roomID",idAdmin);
+    console.log('update');
+    console.log(idAdmin);
     
 }
 
