@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../user/loginstyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <script src="index.js" defer></script>
+    <script src="hotel.js" defer></script>
     <title>Document</title>
 </head>
 
 <body style="background-image: url(../../img/backgroundHotel.jpeg);">
 
-    <form class="border-aqua bg-white">
+    <form class="border-aqua bg-white"onsubmit="signupFormSubmit(event)">
 
         <div class="text-center">
-            <h1>Hotel Create</h1>
+            <h1 id="adminName">Hotel Create </h1>
+        </div>
+
+        <div id="notification">
+
         </div>
 
         <div class="inputContainer">

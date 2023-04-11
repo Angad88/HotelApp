@@ -4,6 +4,11 @@ console.log(token)
 
 const nav = document.querySelector('nav');
 
+
+const selection = document.getElementById('selection');
+const adminTitle = document.getElementById('greeting');
+const toLoginPage = document.getElementById('toLoginPage');
+
 window.onscroll = () => {
     if (document.body.scrollTop >= 50) {
         nav.classList.add('nav-scrolled');
@@ -23,12 +28,12 @@ function getAdminInfo() {
     const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
     if(!adminInfo) {
         alert("You need to log in to get access");
-        window.location.href = "./admin/adminLogin.html";
+        window.location.href = "adminLogin.html";
 
     }
     adminTitle.innerHTML += `${adminInfo.name.toUpperCase()}!`;
     toLoginPage.remove();
-    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="./admin/admin.html">Log out</a></button>`
+    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="adminLogin.html">Log out</a></button>`
 }
 
 
@@ -90,9 +95,6 @@ function getBestHotel() {
 }
 
 
-const selection = document.getElementById('selection');
-const userTitle = document.getElementById('greeting');
-const toLoginPage = document.getElementById('toLoginPage');
 
 getBestHotel();
 getAdminInfo();
