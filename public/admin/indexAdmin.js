@@ -40,7 +40,7 @@ function getAdminInfo() {
 function getBestHotel() {
     const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
     const hotelCardContainer = document.getElementById('hotel-card-container');
-    fetch(`${baseUrl}/admins/${adminInfo.id}`, {
+    fetch(`${baseUrl}/admins/${adminInfo.name}`, {
         method:"GET",
         headers: {
             'Content-type': 'application/json'
@@ -55,7 +55,7 @@ function getBestHotel() {
         for (let i = 0; i < mostFourPopularHotel.length; i++) {
             hotelCardContainer.innerHTML += `<div class="hotel-card" style="position: relative">
             <button class="card-button edit-button" > <i class='fas fa-pen'></i></button>
-            <button class="card-button delete-button"><i class="fa fa-trash"></i></button>
+            <button class="card-button delete-button" onclick="deleteHotelFunction()"><i class="fa fa-trash"></i></button>
 
             <div class="background-card" style="background-image: url(${mostFourPopularHotel[i].img});">
 
@@ -93,6 +93,10 @@ function getBestHotel() {
     }).catch((error) => {
         console.log(error);
     })
+}
+
+function deleteHotelFunction() {
+    
 }
 
 

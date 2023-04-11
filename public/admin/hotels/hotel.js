@@ -40,7 +40,6 @@ getHotelInfo();
 const adminInfo1 = JSON.parse(localStorage.getItem('current-admin'));
 
 const signupFormSubmit = (event) => {
-    event.preventDefault();
 
     const beds = document.getElementById('beds');
     const isBreakfastIncluded = document.getElementById('breakfast');
