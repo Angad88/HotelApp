@@ -1,14 +1,5 @@
 const mongoose = require('mongoose');
 
-const BookingDate = mongoose.Schema ({
-    checkinDate1: {
-        type: Date
-    },
-    checkoutDate1: {
-        type: Date
-    }
-})
-
 const RoomSchema = mongoose.Schema({
     hotel: {
         type: mongoose.Schema.Types.ObjectId,
