@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="hotel-mainpage.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="imageBackground" id="header-background">
+        
+        <nav id="navBar">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div id="hotel-name" class="title" style="color: rgb(97, 97, 98); margin-left: 30px; width: 500px"></div>
+            <div class="selection" id="selection">
+                <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;" href="index.html">Home</a></button>
+                <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;"href="#" data-scroll="popularHotel">Hotel</a></button>
+                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" href="login.html" onclick="signout()">Log out</a></button>
+            </div>
+        </nav>
+        <div class="searchDiv">
+            <div id="hotel-address" class="title2 searchMar" style="background-color: rgb(79, 152, 152); padding: 20px; border-radius: 5px; width: 50%"> </div>
+            </div>
+            </div>
+
+
+        </div>
+        
+        <div class="title" style="text-align: center;" id="hotelDescription-container">
+           HOTEL DESCRIPTION
+        </div>
+        <div id="hotelDescription" style="margin: 50px 100px; line-height: 50px;">
+
+        </div>
+
+        <div style="display:grid; justify-content:center; grid-template-columns: 75%;align-items: center;">
+            <div class="grayLine" style="margin: bottom 70px ;">
+            </div>
+        </div>
+        <div class="popularHotel" id="popularHotel">
+            <div class="title" style="text-align: center;">
+                CHOOSE YOUR ROOM
+            </div>
+            <div id="checkinAndCheckoutDate">
+                <form class="get-user-info">
+                    <div class="searchMar2" style="grid-template-columns: 50% 50%; place-items: center;">                    
+                        <input id="startDate" required class="searchBar searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:" style="border: 2px solid rgb(97, 97, 98); width: 80%; ">
+                        <input id="endDate" required class="searchBar searchMar"onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="To:" style="border: 2px solid rgb(97, 97, 98); width: 80%; ">
+             
+        
+                </form>
+            </div>
+            <div id="hotel-card-container" class="hotel-card-container">
+            
+            </div>
+            
+        </div>
+       
+    </div>
+</body>
+</html>

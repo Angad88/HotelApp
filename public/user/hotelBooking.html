@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="hotelBooking.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="imageBackground" style="background-image: url(../img/backgroundAdmin.jpeg);">
+        
+        <nav id="navBar" style="background-image: url(../img/backgroundAdmin2.jpeg);">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div id="greeting" class="title" style="color: white; margin-left: 30px"> HELLO </div>
+            <div class="selection" id="selection">
+                <button class="button-48"> <a class="button1" style="color: white; font-weight: bold;" href="index.html">Home</a></button>
+                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="login.html" onclick="signout()">Log out</a></button>
+            </div>
+        </nav>
+        <form class="searchDiv" >
+            <div class="title2 searchMar" id="userDesired-destination" style="color: rgba(208, 254, 208, 0.95)">
+                Here is your last step
+            </div>
+            <div class="title2 searchMar" id="userDesired-destination" style="color: rgba(208, 254, 208, 0.95)">
+                Only take a few minutes
+            </div>
+            </div>
+            
+        </form>
+        
+        <div class="popularHotel">
+            <div class="popularHotel" id="popularHotel">
+                <div class="title" style="text-align: center;" id="booking-message">
+                    
+                </div>
+
+            </div>
+            
+        </div>
+        <div style="display:grid; justify-content:center; grid-template-columns: 75%;align-items: center;">
+            <div class="grayLine" style="margin: bottom 50px ; margin-top: 50px;">
+            </div>
+        </div>
+
+        <div class="user-booking-info">
+            <form class="user-info-container">
+                <p class="room-info">Room for: 2 Travelers, 1 Bed</p>
+    
+                <div class="inputContainer">
+                    <label>First Name</label>
+                    <br>
+                    <input required id="user-first-name" class="textInput" type="text" placeholder="(e.g. John)">
+                </div>
+        
+                <div class="inputContainer">
+                    <label>Last Name</label>
+                    <br>
+                    <input required id="user-last-name" class="textInput" type="text" placeholder="(e.g. Smith)">
+                </div>
+    
+                <div class="inputContainer">
+                    <label>Phone Number</label>
+                    <br>
+                    <input required id="user-phoneNumber" class="textInput" type="text" placeholder="Your Phone Number...">
+                </div>
+    
+                <div class="inputContainer">
+                    <label>Email</label>
+                    <br>
+                    <input required id="user-email" class="textInput" type="text" placeholder="Your Email...">
+                </div>
+        
+            </form>
+    
+            <div class="user-room-container" id="user-room-container">
+            </div>
+        </div>
+
+     
+
+
+        
+       
+    </div>
+</body>
+</html>

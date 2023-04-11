@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="imageBackground">
+        
+        <nav id="navBar">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div id="greeting" class="title" style="color: white; margin-left: 30px"> HELLO, </div>
+            <div class="selection" id="selection">
+                <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;" href="#" data-scroll="navBar">Home</a></button>
+                <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;"href="#" data-scroll="destinationChoose">Destination</a></button>
+                <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;"href="#" data-scroll="popularHotel">Hotel</a></button>
+                <button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="login.html">Log in</a></button>
+            </div>
+        </nav>
+        <form class="searchDiv" onsubmit="getRooms(event)">
+            <div class="title2 searchMar"> FIND YOUR HOTELS</div>
+            <input id="destination" required class="searchBar searchMar"type="text" placeholder="Destination">
+            <input id="numberOfTravelers" required class="searchBar searchMar"type="number" placeholder="No. Travelers">
+            <div class="searchMar2">
+                <input id="startDate" required class="searchBar searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:">
+                <input id="endDate" required class="searchBar searchMar"onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="To:">
+            </div>
+            <button id="searchHotelButton" class="title3 searchButton">SEARCH</button>
+            </div>
+        </form>
+        <div class="title" style="text-align: center;" id="destinationChoose">
+            LET'S CHOOSE YOUR DESTINATION
+        </div>
+        <div class="destinationChoose">
+            <button class="title3 destinationImg1" style="background-image: url('../img/vancouver.png');"> <a class="button2" href="../destinationUI/vancouver.html">VANCOUVER</a></button>
+            <button class="title3 destinationImg1"style="background-image: url('../img/montreal.png');"> <a class="button2" href="../destinationUI/montreal.html">MONTREAL</a></button>
+            <button class="title3 destinationImg1"style="background-image: url('../img/toronto.png');"> <a class="button2" href="../destinationUI/toronto.html">TORONTO</a></button>
+            <button class="title3 destinationImg1"style="background-image: url('../img/winnipeg.png');"> <a class="button2" href="../destinationUI/winnipeg.html">WINNIPEG</a></button>
+            <button class="title3 destinationImg1"style="background-image: url('../img/ottawa.png');"> <a class="button2" href="../destinationUI/ottawa.html">OTTAWA</a></button>
+        </div>
+        <div style="display:grid; justify-content:center; grid-template-columns: 75%;align-items: center;">
+            <div class="grayLine" style="margin: bottom 70px ;">
+            </div>
+        </div>
+        <div class="popularHotel" id="popularHotel">
+            <div class="title" style="text-align: center;">
+                MOST POPULAR HOTELS
+            </div>
+            <div id="hotel-card-container" class="hotel-card-container">
+            
+            </div>
+            
+        </div>
+       
+    </div>
+</body>
+</html>

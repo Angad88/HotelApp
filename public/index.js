@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:2500/api/v1';
-const token = localStorage.getItem('access-token');
-console.log(token)
+// const token = localStorage.getItem('access-token');
+localStorage.clear();
 
 const nav = document.querySelector('nav');
 
@@ -12,6 +12,22 @@ window.onscroll = () => {
         nav.classList.remove('nav-scrolled');
     }
 }
+
+const navItems = document.querySelectorAll('.navItems');
+navItems.forEach(item => {
+    item.addEventListener('click', event => {
+        event.preventDefault();
+
+        const sectionId = item.dataset.scroll;
+        const section = document.getElementById(sectionId);
+
+        window.scrollTo({
+            top: section.offsetTop,
+            behavior: 'smooth'
+        });
+    });
+});
+
 const toggleButton = document.getElementsByClassName('toggle-button')[0];
 const selectionBar = document.getElementsByClassName('selection')[0];
 
@@ -23,19 +39,6 @@ const selection = document.getElementById('selection');
 const userTitle = document.getElementById('greeting');
 const toLoginPage = document.getElementById('toLoginPage');
 
-
-
-function getUserInfo() {
-    const userInfo = JSON.parse(localStorage.getItem('current-user'));
-    if(!userInfo) {
-        alert("You need to log in to get access");
-        window.location.href = "./user/login.html";
-
-    }
-    userTitle.innerHTML += `${userInfo.name.toUpperCase()}!`;
-    toLoginPage.remove();
-    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="./user/login.html">Log out</a></button>`
-}
 
 function getBestHotel() {
     const hotelCardContainer = document.getElementById('hotel-card-container');
@@ -108,61 +111,64 @@ function getAllHotel() {
     
 }
 
-
-async function getRooms(event) {
+function alertToLogin(event) {
     event.preventDefault();
-    console.log("hi")
-
-    const destination = document.getElementById('destination').value;
-    const destinationCapitalize = destination.charAt(0).toUpperCase() + destination.slice(1);   
-
-    const numberOfTravelers = document.getElementById('numberOfTravelers').value;
-    const startDate = document.getElementById('startDate').value;
-    const endDate = document.getElementById('endDate').value;
-
-    try {
-        const roomResponse = await fetch(`${baseUrl}/hotels`, {
-            method: "GET",
-            headers: {
-                'Content-type': 'application/json'
-            }
-        });
-        const RoomData = await roomResponse.json();
-        const rData = RoomData.data;
-
-        const suitableHotel = [];
-        for(let i = 0; i < rData.length; i++) {
-            let hotelID;
-            hotelID = rData[i].hotel;
-            const hotelResponse = await fetch(`${baseUrl}/admins/${hotelID}`, {
-                method: "GET",
-                headers: {
-                    'Content-type' : 'application/json'
-                }
-            });
-        
-            const HotelData = await hotelResponse.json();
-    
-            const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;
-            const matchingNumberOfTravelers = numberOfTravelers >= rData[i].beds ? true : false;
-            console.log(matchingNumberOfTravelers, rData[i].beds);
-            const matchingAvailableDate = startDate >= rData[i].startDate && endDate <= rData[i].endDate ? true : false;
-            if(matchingDestination && matchingNumberOfTravelers && matchingAvailableDate) {
-               suitableHotel.push(rData[i]);
-            }
-        }
-
-        console.log(suitableHotel);
-    } catch(error) {
-        console.log(error)
-    }
-    
-    
-    
+    alert('You need to login to access');
+    window.location.href = './user/login.html'
 }
+
+// async function getRooms(event) {
+//     event.preventDefault();
+
+//     const destination = document.getElementById('destination').value;
+//     const destinationCapitalize = destination.charAt(0).toUpperCase() + destination.slice(1);   
+
+//     const numberOfTravelers = document.getElementById('numberOfTravelers').value;
+//     const startDate = document.getElementById('startDate').value;
+//     const endDate = document.getElementById('endDate').value;
+
+//     try {
+//         const roomResponse = await fetch(`${baseUrl}/hotels`, {
+//             method: "GET",
+//             headers: {
+//                 'Content-type': 'application/json'
+//             }
+//         });
+//         const RoomData = await roomResponse.json();
+//         const rData = RoomData.data;
+
+//         const suitableHotel = [];
+//         for(let i = 0; i < rData.length; i++) {
+//             let hotelID;
+//             hotelID = rData[i].hotel;
+//             const hotelResponse = await fetch(`${baseUrl}/admins/${hotelID}`, {
+//                 method: "GET",
+//                 headers: {
+//                     'Content-type' : 'application/json'
+//                 }
+//             });
+        
+//             const HotelData = await hotelResponse.json();
+    
+//             const matchingDestination = HotelData.data.city === destinationCapitalize? true :false;
+//             const matchingNumberOfTravelers = numberOfTravelers >= rData[i].beds ? true : false;
+//             console.log(matchingNumberOfTravelers, rData[i].beds);
+//             const matchingAvailableDate = startDate >= rData[i].startDate && endDate <= rData[i].endDate ? true : false;
+//             if(matchingDestination && matchingNumberOfTravelers && matchingAvailableDate) {
+//                suitableHotel.push(rData[i]);
+//             }
+//         }
+
+//         console.log(suitableHotel);
+//     } catch(error) {
+//         console.log(error)
+//     }
+    
+    
+    
+// }
 
 
 
 getAllHotel();
 getBestHotel();
-getUserInfo();

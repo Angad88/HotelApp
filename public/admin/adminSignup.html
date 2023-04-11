@@ -1,0 +1,116 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../user/loginstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="admin.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body style="background-image: url(../img/backgroundAdmin.jpeg);">
+
+    <form class="border-aqua bg-white"onsubmit="signupFormSubmit(event)">
+
+        <div class="text-center">
+            <h1>Admin Sign Up</h1>
+        </div>
+
+        <div id="notification">
+
+        </div>
+
+        <div class="inputContainer">
+            <label>Email</label>
+            <br>
+            <input required id="email"class="textInput" type="email" placeholder="Email...">
+        </div>
+
+
+        <div class="inputContainer">
+            <label>Password</label>
+            <br>
+            <input required id="password"class="textInput" type="textInput" placeholder="Password...">
+        </div>
+
+        <div class="text-center">
+            <h2>Hotel Information</h2>
+        </div>
+
+        <div class="inputContainer">
+            <label>Hotel Name</label>
+            <br>
+            <input required id="name"class="textInput" type="text" placeholder="Name...">
+        </div>
+
+        <div class="inputContainer">
+            <label>Description</label>
+            <br>
+            <input id="description"class="textInput" type="text" placeholder="Description...">
+        </div>
+
+        <div class="inputContainer">
+            <label>Address</label>
+            <br>
+            <input id="address"class="textInput" type="text" placeholder="Address...">
+        </div>
+
+
+        <div class="inputContainer">
+            <label>City</label>
+            <br>
+            <input required id="city"class="textInput" type="text" placeholder="Destination...">
+        </div>
+
+        <div class="inputContainer">
+            <label>Province</label>
+            <br>
+            <input required id="province"class="textInput" type="text" placeholder="Destination...">
+        </div>
+
+        <div class="inputContainer">
+            <label>Postal Code</label>
+            <br>
+            <input required id="postal_code"class="textInput" type="text" placeholder="Postal Code...">
+        </div>
+
+        <div class="inputContainer">
+            <label>Review Stars</label>
+            <br>
+            <input id="review" class="textInput" type="number" placeholder="Review Stars...">
+        </div>
+
+        <div class="inputContainer">
+            <label>Hotel Image</label>
+            <br>
+            <input id="image"class="textInput" type="textInput" placeholder="Img...">
+        </div>
+        
+
+        <div class="text-center">
+            <div class="buttonContainer">
+                <button id="signupButton" style="background-image: url(../img/backgroundAdmin3.png);">Add</button>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- <div class="text-center">
+            <span>Forgot your password? <a id = "forgotPassword" href="#">Click Here</a></span>
+        </div> -->
+
+        <div class="text-center">
+            <p id="paragraphFooter">
+                You're already a member? <a id="signupAccount" href="adminLogin.html">Login  here</a>
+            </p>
+        </div>
+        
+
+    </form>
+
+
+</body>
+
+</html>

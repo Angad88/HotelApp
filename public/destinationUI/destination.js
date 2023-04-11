@@ -6,7 +6,18 @@ const selection = document.getElementById('selection');
 const userTitle = document.getElementById('greeting');
 const toLoginPage = document.getElementById('toLoginPage');
 
+const nav = document.querySelector('nav');
 
+window.onscroll = () => {
+    if (document.body.scrollTop >= 50) {
+        nav.classList.add('nav-scrolled');
+    }
+    else {
+        nav.classList.remove('nav-scrolled');
+    }
+}
+
+// Authenticate user
 function getUserInfo() {
     const userInfo = JSON.parse(localStorage.getItem('current-user'));
     if(!userInfo) {
@@ -16,7 +27,7 @@ function getUserInfo() {
     }
     userTitle.innerHTML += `${userInfo.name.toUpperCase()}!`;
     toLoginPage.remove();
-    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="../user/login.html">Log out</a></button>`
+    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" onclick="signout()">Log out</a></button>`
 }
 
 function filterHotel() {
@@ -35,6 +46,8 @@ function filterHotel() {
         const hotelData = adminData.data;
         
         for(let i = 0; i < hotelData.length; i++) {
+            
+        // Generate the review title based on review stars
             let reviewTitle;
             if (hotelData[i].reviewStars >= 4.5) {
                 reviewTitle = "VERY GOOD";
@@ -51,18 +64,18 @@ function filterHotel() {
             else {
                 reviewTitle = 'VERY BAD'
             }
-            console.log(hotelData[i].city === title.text)
-            if (hotelData[i].city === title.text) {
-                // console.log(adminData.data[i].city === title.text);
 
+            // Check the hotel city to be equaled to page city
+            if (hotelData[i].city === title.text) {
+                console.log(hotelData[i]);
                 hotelCardContainer.innerHTML += ` <div class="hotel-card">
-                <div class="background-card" style="background-image: url('../img/hotel4.png');">
+                <div class="background-card" style="background-image: url(${hotelData[i].img});">
 
                 </div>
                 <div class="hotel-info-container">
                     <div class="info-box">
                         <div class="hotel-info">
-                            <h3>${hotelData[i].name}</h3>
+                            <h3 id=${hotelData[i]._id} onclick="directToHotelPage(event)">${hotelData[i].name}</h3>
                             <h4>${hotelData[i].address}, ${hotelData[i].city}, ${hotelData[i].province}, ${hotelData[i].postalCode}</h4>
                         </div>
                 
@@ -78,7 +91,7 @@ function filterHotel() {
                     </div>
                     <div class="description">
                         <h4>Description</h4>
-                        <p>${hotelData[i].description}</p>
+                        <p>${hotelData[i].description.slice(0, 300)}...</p>
                     </div>
                 </div>
 
@@ -93,7 +106,22 @@ function filterHotel() {
     }).catch((error) => {
         console.log(error);
     })
+
+}
+
+const signout = () => {
+    localStorage.clear();
+    window.location.href = '../user/login.html';
 }
 
 filterHotel();
 getUserInfo();
+
+// TO HOTEL MAIN PAGE
+function directToHotelPage(event) {
+    let hotelId = event.target.id;
+    
+    localStorage.setItem('hotelId', hotelId);
+    window.location.href = '../user/hotel-mainpage.html';
+
+}

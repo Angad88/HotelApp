@@ -18,4 +18,7 @@ router.put('/:id', RoomController.updateRoom);
 // Get All Rooms
 router.get('/', RoomController.getAllRoom);
 
+//Book Room
+router.put('/bookRoom/:id', RoomController.bookRoom);
+
 module.exports = router;

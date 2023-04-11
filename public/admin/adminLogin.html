@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../user/loginstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="admin.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body style="background-image: url(../img/backgroundAdmin.jpeg);">
+
+    <form class="border-aqua bg-white"onsubmit="loginFormSubmit(event)">
+
+        <div class="text-center">
+            <h1>Admin Sign In</h1>
+        </div>
+
+        <div id="notification">
+
+        </div>
+
+
+        <div class="inputContainer">
+            <label>Email</label>
+            <br>
+            <input required id="email"class="textInput" type="email" placeholder="Email...">
+        </div>
+
+
+        <div class="inputContainer">
+            <label>Password</label>
+            <br>
+            <input required id="password"class="textInput" type="textInput" placeholder="Password...">
+        </div>
+
+
+        
+
+        <div class="text-center">
+            <div class="buttonContainer">
+                <button id="signupButton" style="background-image: url(../img/backgroundAdmin3.png);">Sign in</button>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- <div class="text-center">
+            <span>Forgot your password? <a id = "forgotPassword" href="#">Click Here</a></span>
+        </div> -->
+        <div class="text-center">
+            <p id="paragraphFooter">
+                Don't have an account? <a id="signupAccount" href="adminSignup.html">Sign Up here</a>
+            </p>
+        </div>
+        
+
+    </form>
+
+
+</body>
+
+</html>
