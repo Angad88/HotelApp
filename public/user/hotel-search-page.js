@@ -5,14 +5,17 @@ const userNumberOfTravelers = document.getElementById('userDesired-numberOfTrave
 
 // Display background color for nav bar when user scroll down
 const nav = document.querySelector('nav');
-
+const title = document.querySelector('greeting')
 window.onscroll = () => {
     if (document.body.scrollTop >= 50) {
         nav.classList.add('nav-scrolled');
+        title.style.color = 'rgb(97, 97, 98)';
     }
     else {
         nav.classList.remove('nav-scrolled');
+        title.style.color = 'white';
     }
+
 }
 
 // Get room id that the user want to book and save it in localstorage
