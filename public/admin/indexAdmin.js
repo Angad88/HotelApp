@@ -35,7 +35,7 @@ function getAdminInfo() {
     }
     adminTitle.innerHTML += `${adminInfo.name.toUpperCase()}!`;
     toLoginPage.remove();
-    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="adminLogin.html">Log out</a></button>`
+    selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;" onclick="signout()" >Log out</a></button>`
 }
 
 
@@ -68,10 +68,10 @@ function getBestHotel() {
     
                     <div class="hotel-info">
                         <div class="hotel-title">
-                            <h3>Number of beds</h5>
+                            <h3>Beds</h5>
                             <h3>${adminData.data[i].beds}</h3>
                             <h3>Price</h3>
-                            <h3>${adminData.data[i].price}</h3>
+                            <h3>CA $${adminData.data[i].price}</h3>
                             <h3>Quantity</h3>
                             <h4>${adminData.data[i].quantity}</h4>
                         </div>
@@ -165,3 +165,9 @@ function updateRoom(event) {
 
 getBestHotel();
 getAdminInfo();
+
+const signout = () => {
+    localStorage.clear();
+    window.location.href = 'adminLogin.html';
+}
+
