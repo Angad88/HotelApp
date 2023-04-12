@@ -80,10 +80,8 @@ function getBestHotel() {
             hotelIdArr.push(mostFourPopularHotel[i]._id);
             hotelCardContainer.innerHTML += `<div class="hotel-card" >
             <div class="background-card" style="background-image: url(${mostFourPopularHotel[i].img});">
-
             </div>
             <div class="hotel-info-container">
-
                 <div class="hotel-info">
                     <div class="hotel-title">
                         <h3 id=${mostFourPopularHotel[i]._id} onclick='directToHotelPage(event)'>${mostFourPopularHotel[i].name}</h3>
@@ -97,17 +95,14 @@ function getBestHotel() {
                         <div class="grayLine" style="margin: bottom 50px ; height: 1px">
                         </div>
                     </div>
-
                 </div>    
                 
-
                 <div class="hotel-description">
                     <h3>Description</h3>
                     <p>${mostFourPopularHotel[i].description.slice(0,100)}...</p>
                 </div>
                 
             </div>
-
         </div>`
         }
         
@@ -190,6 +185,7 @@ async function getRooms(event) {
             // Convert all Date type into Date object
             const roomDataStartDate = new Date(rData[i].startDate);
             const roomDataEndDate = new Date(rData[i].endDate);
+            console.log(rData[i].bookingDate);
             const unavailableCheckinDate  = new Date(rData[i].bookingDate.checkinDate);
             const unavailableCheckoutDate = new Date(rData[i].bookingDate.checkoutDate);
 
