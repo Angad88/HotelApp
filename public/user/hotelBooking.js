@@ -5,7 +5,19 @@ const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
 const checkDate = bookingInfo.startDate !== "Invalid Date"  && bookingInfo.endDate !== "Invalid Date" ? true : false;
 
 
+const nav = document.querySelector('nav');
+const title = document.querySelector('greeting')
+window.onscroll = () => {
+    if (document.body.scrollTop >= 50) {
+        nav.classList.add('nav-scrolled');
+        title.style.color = 'rgb(97, 97, 98)';
+    }
+    else {
+        nav.classList.remove('nav-scrolled');
+        title.style.color = 'white';
+    }
 
+}
 
 // Authenticate user
 const userTitle = document.getElementById('greeting')
@@ -113,10 +125,8 @@ async function fetchRoomData() {
             const formattedStartDate = checkinDate.toDateString().slice(3);
             const formattedEndDate = checkoutDate.toDateString().slice(3);
         
-            userRoomContainer.innerHTML += `<div class="user-room-card">
-            <div class="background-card" style="background-image: url(${roomData.img}); height: 100%;">
-        
-            </div>
+            userRoomContainer.innerHTML += `<div class=" user-room-card">
+
             <div class="user-room-info">
                 <div style="display:grid; grid-template-columns: 50% 50%;">
                     <h3>${hotelData.name}</h3>
