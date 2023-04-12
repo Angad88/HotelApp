@@ -7,7 +7,7 @@ const nav = document.querySelector('nav');
 
 const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
 
-
+const desc = document.getElementById('description');
 const selection = document.getElementById('selection');
 const adminTitle = document.getElementById('greeting');
 const toLoginPage = document.getElementById('toLoginPage');
@@ -38,6 +38,28 @@ function getAdminInfo() {
     selection.innerHTML += `<button id="toLoginPage" class="button-48"> <a class="button1" style="color: white; font-weight: bold;"href="adminLogin.html">Log out</a></button>`
 }
 
+function adminFetchInfo() {
+    fetch(`${baseUrl}/admins/${adminInfo._id}`, {
+        method:"GET",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+
+    }).then((response) => {
+        console.log();
+        return response.json();
+
+    }).then((adminData) => {
+        desc.innerHTML += `<p style="font-size: 18px; margin-top: 50px;">${adminData.data.description}</p>`
+        return adminData;
+    }).catch((error) => {
+        console.log(error);
+    })
+        
+  }
+
+
 
 function getBestHotel() {
     const adminInfo = JSON.parse(localStorage.getItem('current-admin'));
@@ -56,6 +78,7 @@ function getBestHotel() {
         for (let i = 0; i < adminData.data.length; i++) {
 
             if (adminData.data[i].hotel == adminInfo._id) {
+                console.log();
                 adminArray.push(adminData.data[i]._id);
                 console.log(adminData.data[i]._id);
                 hotelCardContainer.innerHTML += `<div class="hotel-card" style="position:relative;">
@@ -82,7 +105,8 @@ function getBestHotel() {
                             <div class="grayLine" style="margin: bottom 50px ; height: 1px">
                             </div>
                         </div>
-    
+
+
                     </div>    
                     
 
@@ -162,6 +186,6 @@ function updateRoom(event) {
 }
 
 
-
+adminFetchInfo();
 getBestHotel();
 getAdminInfo();

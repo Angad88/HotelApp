@@ -70,7 +70,11 @@ const signupFormSubmit = (event) => {
         quantity: quantity.value,
         startDate: startDate.value,
         endDate: endDate.value,
-        img: img.value
+        img: img.value,
+        bookingDate: {
+            checkinDate: startDate.value,
+            checkoutDate: startDate.value
+        }
     }
 
     console.log(newHotel);
@@ -105,43 +109,40 @@ const signupFormSubmit = (event) => {
 }
 
 
-const updateRoomEvent = (event, token) => {
+const updateRoomEvent = (event) => {
     event.preventDefault();
+    const newHotel = {};
+    console.log(newHotel)
+    console.log('hi');
 
-    const beds = document.getElementById('beds');
-    const isBreakfastIncluded = document.getElementById('breakfast');
-    const price = document.getElementById('price');
-    const quantity = document.getElementById('quantity');
-    const startDate = document.getElementById('start');
-    const endDate = document.getElementById('end');
-    const img = document.getElementById('image');
-    let isBreakfastIncluded1 = false;
+    const beds = document.getElementById('beds').value;
+    const bedsUpdate = beds !== "" ? newHotel.beds = beds : false;  
 
-    if (isBreakfastIncluded.value == "on") {
-        isBreakfastIncluded1 = true;
-    }
-    else {
-        isBreakfastIncluded1 = false;
-    }
+    const isBreakfastIncluded = document.getElementById('breakfast').value;
+    const isBreakfastIncludedUpdate = isBreakfastIncluded !== "" ? newHotel.isBreakfastIncluded = isBreakfastIncluded : false;  
+    
+    
+    const price = document.getElementById('price').value;
+    const priceUpdate = price !== "" ? newHotel.price = price : false;
 
+    
+    const quantity = document.getElementById('quantity').value;
+    const quantityUpdate  = quantity !== ""? newHotel.quantity = quantity : false;
 
-
-
-    const newHotel = {
-        hotel: adminInfo1._id,
-        beds: beds.value,
-        isBreakfastIncluded: isBreakfastIncluded1,
-        price: price.value,
-        quantity: quantity.value,
-        startDate: startDate.value,
-        endDate: endDate.value,
-        img: img.value
-    }
+    const startDate = document.getElementById('start').value;
+    const startDateUpdate  = startDate !== ""? newHotel.startDate = startDate : false;
+    
+    const endDate = document.getElementById('end').value;
+    const endDateUpdate  = endDate !== ""? newHotel.endDate = endDate : false;
+    
+    const img = document.getElementById('image').value;
+    const imgUpdate  = img !== ""? newHotel.img = img : false;
+    
 
     console.log(newHotel);
 
     fetch(`${baseUrl}/hotels/${hotelToken}`, {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify(newHotel),
         headers: {
             'Content-type': 'application/json',
@@ -150,6 +151,7 @@ const updateRoomEvent = (event, token) => {
         }
     }).then((response) => {
         return response.json();
+        
     }).then((data) => {
         alertBox.innerHTML = "";
        
