@@ -95,4 +95,3 @@ const signupFormSubmit = (event) => {
     })
 }
 
-const updateUser

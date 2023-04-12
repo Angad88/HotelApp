@@ -129,20 +129,24 @@ function deleteRoom(event) {
         fetch(`${baseUrl}/hotels/${idAdmin}`, {
             method:"DELETE",
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+                
             }
+
         }).then((response) => {
+            console.log(response);
+            window.location.href = "indexAdmin.html";
             return response.json();
         }).then((adminData) => {
             console.log(adminData);
+            if (adminData.token)
             window.location.href = "indexAdmin.html";
             return adminData;
         }).catch((error) => {
             console.log(error);
         })
             
-      } else {
-            window.location.href = "indexAdmin.html";
       }
 
 
@@ -153,6 +157,7 @@ function updateRoom(event) {
     localStorage.setItem("roomID",idAdmin);
     console.log('update');
     console.log(idAdmin);
+    window.location.href = "hotels/updateRoom.html";
     
 }
 
