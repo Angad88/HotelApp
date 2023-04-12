@@ -12,13 +12,13 @@
 <body>
     <div class="imageBackground" id="header-background">
         
-        <nav id="navBar">
+        <nav class="navBar1"  style="background-image: url(../img/backgroundHotel.jpeg);">
             <a href="#" class="toggle-button">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </a>
-            <div id="hotel-name" class="title" style="color: rgb(97, 97, 98); margin-left: 30px; width: 500px"></div>
+            <div id="hotel-name" class="title" style="color: rgb(255, 255, 255); margin-left: 30px; width: 500px"></div>
             <div class="selection" id="selection">
                 <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;" href="index.html">Home</a></button>
                 <button class="button-48"> <a class="button1 navItems" style="color: white; font-weight: bold;"href="#" data-scroll="popularHotel">Hotel</a></button>
@@ -26,18 +26,22 @@
             </div>
         </nav>
         <div class="searchDiv">
-            <div id="hotel-address" class="title2 searchMar" style="background-color: rgb(79, 152, 152); padding: 20px; border-radius: 5px; width: 50%"> </div>
+            <div id="hotel-address" class="title4 searchMar" style="background-image: url(../img/backgroundHotel2.jpeg); padding: 20px; border-radius: 5px; width: 15%; opacity: 0.9;"> </div>
             </div>
             </div>
 
 
         </div>
-        
-        <div class="title" style="text-align: center;" id="hotelDescription-container">
-           HOTEL DESCRIPTION
+        <div style="display:grid; justify-content:center; grid-template-columns: 75%;align-items: center;">
+            <div class="grayLine" style="margin: bottom 70px ; margin-top: 70px;">
+            </div>
+        <div class="gridDescription" style=" margin-top: 50px;">
+        <div class="title" style="text-align: right;" id="hotelDescription-container">
+           HOTEL DESCRIPTION:
         </div>
-        <div id="hotelDescription" style="margin: 50px 100px; line-height: 50px;">
+        <div id="hotelDescription" style="margin: 20px 0px 100px 25px; line-height: 25px; text-align: left;">
 
+        </div>
         </div>
 
         <div style="display:grid; justify-content:center; grid-template-columns: 75%;align-items: center;">
@@ -45,19 +49,19 @@
             </div>
         </div>
         <div class="popularHotel" id="popularHotel">
-            <div class="title" style="text-align: center;">
+            <div class="title" style="text-align: center; margin-top: 50px;">
                 CHOOSE YOUR ROOM
             </div>
             <div id="checkinAndCheckoutDate">
                 <form class="get-user-info">
                     <div class="searchMar2" style="grid-template-columns: 50% 50%; place-items: center;">                    
-                        <input id="startDate" required class="searchBar searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:" style="border: 2px solid rgb(97, 97, 98); width: 80%; ">
-                        <input id="endDate" required class="searchBar searchMar"onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="To:" style="border: 2px solid rgb(97, 97, 98); width: 80%; ">
+                        <input id="startDate" required class="searchBar4 searchMar" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="From:" style=" width: 80%; ">
+                        <input id="endDate" required class="searchBar4 searchMar"onfocus="(this.type = 'date')" onblur="(this.type = 'text')" placeholder="To:" style=" width: 80%; ">
              
         
                 </form>
             </div>
-            <div id="hotel-card-container" class="hotel-card-container">
+            <div id="hotel-card-container" class="hotel-card-container" style="margin-top: 100px;">
             
             </div>
             

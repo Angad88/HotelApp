@@ -11,11 +11,11 @@ const title = document.querySelector('#hotel-name')
 window.onscroll = () => {
     if (document.body.scrollTop >= 50) {
         nav.classList.add('nav-scrolled');
-        title.style.color = 'white';
+        title.style.color = 'rgb(97, 97, 98)';
     }
     else {
         nav.classList.remove('nav-scrolled');
-        title.style.color = 'rgb(97, 97, 98)';
+        title.style.color = 'white';
     }
 
 }

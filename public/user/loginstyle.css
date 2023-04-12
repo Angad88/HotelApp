@@ -74,6 +74,10 @@ span {
     color: rgb(57, 57, 57);
 }
 
+.navBar-notScroll {
+    opacity: 0.7;
+}
+
 #signupButton {
     background-color: rgb(117, 161, 190);
     width: 100%;
