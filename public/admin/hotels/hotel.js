@@ -73,7 +73,7 @@ const signupFormSubmit = (event) => {
         img: img.value,
         bookingDate: {
             checkinDate: startDate.value,
-            checkoutDate: endDate.value
+            checkoutDate: startDate.value
         }
     }
 
